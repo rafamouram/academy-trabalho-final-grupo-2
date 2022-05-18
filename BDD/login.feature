@@ -8,8 +8,8 @@ Funcionalidade: Login
 
         Cenário: Login sem preencher e-mail e senha
             Quando clico no botão Entrar
-            Então visualizo uma mensagem de erro de preenchimento de campos obrigatórios
-
+            Então visualizo uma mensagem de erro de e-mail obrigatório
+            E visualizo uma mensagem de erro de senha obrigatória 
 
         Cenário: Login sem preencher o campo e-mail
             Quando informo uma senha válida
@@ -27,16 +27,18 @@ Funcionalidade: Login
             E clico no botão Entrar
             Então visualizo uma mensagem de erro de e-mail inválido
 
-
         Cenário: Login com senha inválida
             Quando informo um e-mail válido
             E informo uma senha inválida
             E clico no botão Entrar
             Então visualizo uma mensagem de erro de senha inválida
- 
 
         Cenário: Login com usuário válido
             Quando informo um e-mail válido
             E informo uma senha válida
-            E clico no botão salvar
+            E clico no botão Entrar
             Então sou autentificado e tenho acesso às demais funcionalidades do site
+
+        Cenário: Ir para a tela de registrar usuário
+            Quando clico no link "Registre-se"
+            Então sou redirecionado para a tela de cadastro
