@@ -1,0 +1,85 @@
+Feature: Perfil
+Como um usuário com conta no sistema
+Desejo atualizar minhas informações básicas
+Para manter meus dados atualizados no sistema.
+
+    Scenario: Atulizar com campo nome em branco
+        Given que acesso a tela de perfil
+        When deixo os campos nome em branco
+        Then visualizo uma mensagem
+        | mensagem | Informe seu nome |
+
+    Scenario: Atulizar com campo E-mail em branco
+        Given que acesso a tela de perfil
+        When deixo os campos email em branco
+        Then visualizo uma mensagem
+        | mensagem | Informe seu e-mail |
+
+    Scenario: Atualizar Usuario pelo nome
+       Given que acesso a tela de perfil
+       When preencho o campo nome
+       | nome | Sophia Santos |
+       And clico no botão Confirmar alterações
+       And clico no botão Confirmar
+       Then visualizo uma mensagem
+       | mensagem | Informações atualizadas com sucesso |
+
+    Scenario: Atualizar Usuario pelo E-mail
+       Given que acesso a tela de perfil
+       When preencho o campo E-mail
+       | email | sophia@g.com |
+       And clico no botão Confirmar alterações
+       And clico no botão Confirmar
+       Then visualizo uma mensagem
+       | mensagem | Informações atualizadas com sucesso |
+
+    Scenario: Atualizar Usuario com E-mail já utilizado
+       Given que acesso a tela de perfil
+       When preencho o campo E-mail
+       | email | luffy@g.com |
+       And clico no botão Confirmar alterações
+       And clico no botão Confirmar
+       Then visualizo uma mensagem
+       | mensagem | Informações atualizadas com sucesso |
+
+    Scenario: Atualizar Usuario com E-mail inválido
+       Given que acesso a tela de perfil
+       When preencho o campo E-mail
+       | email | luffyg.com |
+       And clico no botão Confirmar alterações
+       Then visualizo uma mensagem
+       | mensagem | Formato de e-mail inválido. |
+
+    Scenario: Atualizar nome com mais de 100 caracteres
+       Given que acesso a tela de perfil
+       When preencho o campo nome
+       | email | ChicoChicoChicoChicoChicoChicoChicoChicoChicoChicoChicoChicoChicoChicoChicoChicoChicoChicoChicoChicoChicoChico |
+       And clico no botão Confirmar alterações
+       Then visualizo uma mensagem
+       | mensagem | Informe no máximo 100 letras no seu nome |
+
+    Scenario: Atualizar E-mail com mais de 60 caracteres
+       Given que acesso a tela de perfil
+       When preencho o campo E-mail
+       | email | chicochicochicochicochicochicochicochicochicochicochicochico@g.com |
+       And clico no botão Confirmar alterações
+       And clico no botão Confirmar
+       Then visualizo uma mensagem
+       | mensagem | Informações atualizadas com sucesso |
+
+    Scenario: Atualizar Usuario pelo nome com caracteres especiais
+       Given que acesso a tela de perfil
+       When preencho o campo nome
+       | nome | .... |
+       And clico no botão Confirmar alterações
+       And clico no botão Confirmar
+       Then visualizo uma mensagem
+       | mensagem | Informações atualizadas com sucesso |
+
+    Scenario: Atualizar Usuario pelo nome com caracteres especiais
+       Given que acesso a tela de perfil
+       When preencho o campo nome
+       | nome | ,,,, |
+       And clico no botão Confirmar alterações
+       Then visualizo uma mensagem
+       | mensagem | Formato do nome é inválido. |
