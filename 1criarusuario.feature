@@ -16,7 +16,7 @@ Scenario: Cadastrar usuário com e-mail no formato padrão
 
 Scenario: Não deve ser possível cadastrar usuário com e-mail inválido
     Given que entrei no site "Lembra Compras"
-    And cliquei no botão  "Registre-se"
+    And cliquei no botão "Registre-se"
     When preencho os campos de cadastro
     And preencho com um e-mail inválido
     And clico no botão "Registrar"
