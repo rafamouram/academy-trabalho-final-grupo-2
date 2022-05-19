@@ -6,14 +6,15 @@ Feature: Histórico de lista de compras
     Background: Acessar e logar no site
         Given que acessei o site Lembra Compras
         And loguei com email e senha válidos
-      # | email | bruno@gmail.com |
-      # | senha | bruno           |
+        | email | bruno@gmail.com |
+        | senha | bruno           |
         And criei listas de compras
         And acessei o histórico
 
-        Scenario: Deve ser possível acessar o histórico da lista de compras
+        Scenario: Deve ser possível acessar o histórico da lista de compras mostrando apenas as últimas 10 listas mais recentes
             When consulto o histórico da lista de compras
             Then visualizo o histórico da lista de compras 
+            And visualizo apenas as últimas 10 listas mais recentes
 
         Scenario: Deve ser possível visualizar o nome e os itens de uma lista no histórico    
             When clico na lista de compras do histórico
@@ -27,5 +28,21 @@ Feature: Histórico de lista de compras
             Then visualizo o histórico da lista de compras com o nome e a data de criação
             | nomeDaLista   | Compras da páscoa     |
             | dataDeCriacao | Criada em: 18/05/2022 |
+
+        Scenario: Deve ser possível deslogar do site Lembra Compras após consultar o histórico 
+            When clico nas opções do site Lembra Compras
+            And clico para sair da conta
+            Then o usuário é deslogado retornando para tela de login
+
+        Scenario: Deve ser possível consultar o perfil de usuário após navegar pelo histórico de lista de compras
+            When clico nas opções do site Lembra Compras  
+            And clico em Perfil
+            Then sou redirecionado para a tela do perfil do usuário
+
+        Scenario: Navegar para a lista de compras
+            When clico na lista de compras
+            Then sou redirecionado para a página da lista de compras
+
+
 
         
