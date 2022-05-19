@@ -1,32 +1,35 @@
-Scenario: Cadastrar usuário com nome, e-mail e senha
-    Given que entrei no site "Lembra Compras"
-    And cliquei no botão "Registre-se"
-    When preencho os campos "nome", "e-mail" e "senha"
-    And preencho o campo "confirmar senha" com a mesma senha
-    And clico no botão "Registrar"
-    Then realizo o cadastro de um novo usuário
+Feature: Criar usuário
+    Como uma pessoa qualquer
+    Desejo me registrar no sistema
+    Para ter acesso as funcionalidades de lista de compras
 
-Scenario: Cadastrar usuário com e-mail no formato padrão
-    Given que entrei no site "Lembra Compras"
-    And cliquei no botão "Registre-se"
-    When preencho os campos "nome", "e-mail" e "senha"
-    And preencho com um e-mail válido
-    And clico no botão "Registrar"
-    Then o cadastro é realizado
+    Background: Acessar o site e entrar na tela de registro
+        Given que acessei o site Lembra Compras
+        And acessei a tela de registro
 
-Scenario: Não deve ser possível cadastrar usuário com e-mail inválido
-    Given que entrei no site "Lembra Compras"
-    And cliquei no botão "Registre-se"
-    When preencho os campos de cadastro
-    And preencho com um e-mail inválido
-    And clico no botão "Registrar"
-    Then a operação de cadastro é cancelada
+        Scenario: Cadastrar usuário com nome, e-mail, senha e confirmar senha
+            When preencho os campos necessários para cadastro
+            | nome            | anna          |
+            | e-mail          | anna@anna.com |
+            | senha           | 1234567       |
+            | confirmar senha | 1234567       | 
+            Then visualizo a mensagem de sucesso
+            | mensagem | Usuário criado com sucesso! |
 
-Scenario: Não deve ser possível cadastrar usuário com e-mail já cadastrado
-    Given que entrei no site "Lembra Compras"
-    And cliquei no botão "Registre-se"
-    When preencho os campos de cadastro
-    And preencho o campo de "e-mail" com um e-mail já cadastrado
-    And clico no botão "Registrar"
-    Then recebo a mensagem "User already exists"
-    And não consigo finalizar o cadastro
+        Scenario: Não deve ser possível cadastrar usuário com e-mail inválido
+            When preencho os campos necessários para cadastro
+            | nome            | anna          |
+            | e-mail          | anna.anna.com |
+            | senha           | 1234567       |
+            | confirmar senha | 1234567       | 
+            Then visualizo a mensagem de erro
+            | mensagem | Formato de e-mail inválido. |
+
+        Scenario: Não deve ser possível cadastrar usuário com e-mail já cadastrado
+            When preencho os campos de cadastro
+            | nome            | nana          |
+            | e-mail          | anna@anna.com |
+            | senha           | 1234568       |
+            | confirmar senha | 1234568       | 
+            Then visualizo a mensagem de erro
+            | mensagem | Este e-mail já é utilizado por outro usuário. |
