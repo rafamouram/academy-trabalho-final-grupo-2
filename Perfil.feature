@@ -22,26 +22,26 @@ Feature: Perfil
             Then visualizo uma mensagem de erro
             | mensagem | Informe seu e-mail |
 
-         Scenario: Atualizar Usuario pelo nome
+         Scenario: Atualizar Usuário pelo nome
             When preencho o campo nome
             | nome | Sophia Santos |
             Then visualizo uma mensagem de sucesso
             | mensagem | Informações atualizadas com sucesso |
 
-         Scenario: Atualizar Usuario pelo E-mail
+         Scenario: Atualizar Usuário pelo E-mail
             When preencho o campo E-mail
             | email | sophia@g.com |
             Then visualizo uma mensagem de sucesso
             | mensagem | Informações atualizadas com sucesso |
 
          # Bug com o e-mail já utilizado
-         Scenario: Atualizar Usuario com E-mail já utilizado
+         Scenario: Atualizar Usuário com E-mail já utilizado
             When preencho o campo E-mail
             | email | landin@gmail.com |
             Then visualizo uma mensagem de sucesso
             | mensagem | Formato de nome inválido |
 
-         Scenario: Atualizar Usuario com E-mail inválido
+         Scenario: Atualizar Usuário com E-mail inválido
             When preencho o campo E-mail
             | email | luffyg.com |
             Then visualizo uma mensagem e erro
@@ -60,14 +60,21 @@ Feature: Perfil
             Then visualizo uma mensagem 
             | mensagem | Informe no máximo 60 caracteres  |
 
-         Scenario: Atualizar usuario pelo nome com caracteres especiais válidos
+         Scenario: Atualizar usuário pelo nome com caracteres especiais válidos
             When preencho o campo nome
             | nome | .... |
             Then visualizo uma mensagem de sucesso
             | mensagem | Informações atualizadas com sucesso |
 
-         Scenario: Atualizar usuario pelo nome com caracteres especiais inválidos
+         Scenario: Atualizar usuário pelo nome com caracteres especiais inválidos
             When preencho o campo nome
             | nome | ,,,, |
             Then visualizo uma mensagem de erro
             | mensagem | Formato do nome é inválido. |
+
+         Scenario: Atualizar Usuário com apenas espaço
+            When preencho o campo nome
+            | nome |      |
+            And clico no botão Confirmar alterações
+            Then visualizo uma mensagem
+            | mensagem | Não foi possível atualizar suas informações 🥺 |
