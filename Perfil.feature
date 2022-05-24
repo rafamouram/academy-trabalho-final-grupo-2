@@ -44,7 +44,7 @@ Feature: Perfil
          Scenario: Atualizar Usuário com E-mail inválido
             When preencho o campo E-mail
             | email | luffyg.com |
-            Then visualizo uma mensagem e erro
+            Then visualizo uma mensagem de erro
             | mensagem | Formato de e-mail inválido. |
 
          Scenario: Atualizar nome com mais de 100 caracteres
@@ -57,7 +57,7 @@ Feature: Perfil
          Scenario: Não dece ser possível atualizar E-mail com mais de 60 caracteres
             When preencho o campo E-mail
             | email | chicochicochicochicochicochicochicochicochicochicochicochico@g.com |
-            Then visualizo uma mensagem 
+            Then visualizo uma mensagem de erro
             | mensagem | Informe no máximo 60 caracteres  |
 
          Scenario: Atualizar usuário pelo nome com caracteres especiais válidos
@@ -71,10 +71,10 @@ Feature: Perfil
             | nome | ,,,, |
             Then visualizo uma mensagem de erro
             | mensagem | Formato do nome é inválido. |
-
+         
+         # Bug com caracteres especiais
          Scenario: Atualizar Usuário com apenas espaço
             When preencho o campo nome
             | nome |      |
-            And clico no botão Confirmar alterações
-            Then visualizo uma mensagem
+            Then visualizo uma mensagem de erro
             | mensagem | Não foi possível atualizar suas informações 🥺 |
