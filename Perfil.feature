@@ -5,6 +5,9 @@ Feature: Perfil
 
    Background: Acessar a tela de perfil
       Given que acessei o site Lembra compras
+      And loguei no site
+        | email | luffy@g.com   |
+        | senha | 1234          |
       And acessei a tela de perfil
 
       
