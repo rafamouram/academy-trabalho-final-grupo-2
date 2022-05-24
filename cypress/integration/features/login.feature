@@ -52,6 +52,6 @@ Feature: Login
             | senha  | raro     |
             Then sou autentificado e tenho acesso às demais funcionalidades do site
 
-        Scenario: Ir para a tela de registrar usuário
-            When acesso a tela de registro
-            Then visualizo a tela de registro
+        # Scenario: Ir para a tela de registrar usuário
+        #     When acesso a tela de registro
+        #     Then visualizo a tela de registro
