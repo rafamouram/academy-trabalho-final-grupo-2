@@ -17,7 +17,8 @@ Feature: Gestão de lista de compras
                 And incluo uma lista de itens na minha lista de compras
                 |nome       |feijão 500g |oleo 1L |arroz 5kg |macarrão Nº8 |
                 |quantidade |2           |1       |1         |2            |
-                Then visualizo a mensagem "Lista de compras criada com sucesso"
+                Then visualizo a mensagem de sucesso
+                |mensagem |Lista de compras criada com sucesso |
 
             #Validando critérios de aceite 2
             Scenario: Limite de uma lista de compras ativa por vez
@@ -31,11 +32,13 @@ Feature: Gestão de lista de compras
                 When incluo uma lista de itens na lista de compras sem preencher a descrição da lista
                 |nome       |feijão 500g |oleo 1L |arroz 5kg |macarrão Nº8 |
                 |quantidade |2           |1       |1         |2            |
-                Then visualizo a mensagem "Lista de compras criada com sucesso"
+                Then visualizo a mensagem de sucesso
+                |mensagem |Lista de compras criada com sucesso |
             
             Scenario: Criando nova lista de compras sem itens
                 When salvo a lista de compras sem incluir itens
-                Then visualizo a mensagem "Adicione pelo menos um item na sua lista de compras"
+                Then visualizo a mensagem de erro
+                |mensagem | Adicione pelo menos um item na sua lista de compras|
 
             #Validando critérios de aceite 6
             Scenario: Limite mínimo da quantidade dos itens da lista de compras
@@ -43,7 +46,8 @@ Feature: Gestão de lista de compras
                 And incluo um intem com a quantidade menor que 1
                 |item       |alho 200g |
                 |quantidade |0         |
-                Then visualizo a mensagem "Informe pelo menos 1 unidade"
+                Then visualizo a mensagem de erro
+                |mensagem |Informe pelo menos 1 unidade |
 
             #Validando critérios de aceite 7
             Scenario: Limite máximo da quantidade dos itens da lista de compras
@@ -51,7 +55,8 @@ Feature: Gestão de lista de compras
                 And incluo um intem com a quantidade maior que 1000
                 |item       |ovo pente |
                 |quantidade |1001      |
-                Then visualizo a mensagem "Informe uma quantidade menor ou igual a 1000"
+                Then visualizo a mensagem de erro
+                |mensagem |Informe uma quantidade menor ou igual a 1000 |
 
             #Validando critérios de aceite 8
             Scenario: Incluindo item já existente na lista de compras
@@ -60,7 +65,8 @@ Feature: Gestão de lista de compras
                 |item       |iorgute 1L |
                 |quantidade |2          |
                 Then é acrescentada na quantidade do item já incluso anteriormente a lista de compras ativa
-                And visualizo a mensagem "Item adicionado com com sucesso"
+                And visualizo a mensagem de sucesso
+                |mensagem |Item adicionado com com sucesso |
 
             #Validando critérios de aceite 9
             Scenario: Limite máximo da quantidade total atualizada de itens da lista de compras
@@ -68,7 +74,8 @@ Feature: Gestão de lista de compras
                 And incluo um item com o mesmo nome de um item já existente na lista de compras ativa tornando o total atualizado superior a 1000
                 |item       |iorgute 1L |
                 |quantidade |1001       |
-                Then visualizo a mensagem "Não é permitido incluir mais de 1000 unidades do produto"
+                Then visualizo a mensagem de erro
+                |mensagem |Não é permitido incluir mais de 1000 unidades do produto |
 
             #Validando critérios de aceite 10
             Scenario: Marcando item como concluído na lista de compras
@@ -80,4 +87,5 @@ Feature: Gestão de lista de compras
             Scenario: Finalizando uma lista de compras
                 When possuo uma lista de compras salva
                 And finalizo a lista de compra
-                Then visualizo a mensagem "Lista concluída com sucesso"
+                Then visualizo a mensagem de sucesso
+                |mensagem |Lista concluída com sucesso |
