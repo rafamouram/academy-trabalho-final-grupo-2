@@ -21,35 +21,35 @@ Feature: Login
 
         Scenario: Login sem preencher o campo senha
             When informo um e-mail
-            | e-mail | ra@ro.com |
+            | email | ra@ro.com |
             Then visualizo uma mensagem de erro
             | mensagem | Informe sua senha |
 
         Scenario: Login com e-mail inválido
             When informo um e-mail e senha
-            | e-mail | inva@lido.c |
-            | senha  | 123456      |
+            | email | inva@lido.c |
+            | senha  | 123456     |
             Then visualizo uma mensagem de erro
             | mensagem | Formato de e-mail inválido. |
 
         Scenario: Login com e-mail inexistente
            When informo um e-mail e senha
-            | e-mail | wwww@ro.com |
-            | senha  | 123         |
+            | email | wwww@ro.com |
+            | senha  | 123        |
             Then visualizo uma mensagem de erro
             | mensagem | E-mail ou senha incorretos. |
 
         Scenario: Login com senha não correspondente ao e-mail
             When informo um e-mail e senha
-            | e-mail | ra@ro.com |
-            | senha  | 123       |
+            | email | ra@ro.com |
+            | senha  | 123      |
             Then visualizo uma mensagem de erro
             | mensagem | E-mail ou senha incorretos. |
 
         Scenario: Login com usuário válido
             When informo um e-mail e senha
-            | e-mail | ra@ro.com |
-            | senha  | raro      |
+            | email | ra@ro.com |
+            | senha  | raro     |
             Then sou autentificado e tenho acesso às demais funcionalidades do site
 
         Scenario: Ir para a tela de registrar usuário
