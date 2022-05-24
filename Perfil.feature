@@ -81,3 +81,34 @@ Feature: Perfil
             | nome |      |
             Then visualizo uma mensagem de erro
             | mensagem | Não foi possível atualizar suas informações 🥺 |
+
+         Scenario: Deslogar do site Lembra Compras 
+            When clico no menu do Lembra Compras
+            And clico para sair da conta
+            Then sou redirecionado para a tela de login
+
+         Scenario: Navegar para a lista através do menu 
+            When clico no menu do Lembra Compras
+            And clico para acessar uma lista
+            Then sou redirecionado para a página da lista de compras
+
+         Scenario: Navegar para o histórico através menu
+            When clico no menu de Lembra Compras
+            And clico no histórico
+            Then sou redirecionado para a página do histórico
+
+         Scenario: Navegar para o histórico através do cabeçalho
+            When clico no histórico
+            Then sou redirecionado para a página do histórico
+
+         Scenario: Navegar para a lista através cabeçalho 
+            When clico na lista de Compras
+            Then sou redirecionado para a página da lista de compras
+
+         Scenario: Navegar para a lista atráves do ícone "R" do site
+            When clico no ícone R
+            Then sou redirecionado para a página da lista de compras
+
+          Scenario: Navegar para a lista atráves do ícone "Lembra Compras" do site
+            When clico no ícone Lembra compras
+            Then sou redirecionado para a página da lista de compras        
