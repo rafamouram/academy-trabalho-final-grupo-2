@@ -8,14 +8,14 @@ Feature: Perfil
       And acessei a tela de perfil
 
       
-         Scenario: Atulizar com campo nome em branco
+         Scenario: Atualizar com campo nome em branco
             When deixo o campo nome em branco
             And preencho o campo E-mail
             | email | sophia@g.com |
             Then visualizo uma mensagem de sucesso
             | mensagem | Informe seu nome |
 
-         Scenario: Atulizar com campo E-mail em branco
+         Scenario: Atualizar com campo E-mail em branco
             When deixo os campos email em branco
             And preencho o campo E-mail
             | nome | Sophia Santos |
@@ -54,7 +54,7 @@ Feature: Perfil
             | mensagem | Informe no máximo 100 letras no seu nome |
          
          # Bug com mais de 60 caracteres
-         Scenario: Não dece ser possível atualizar E-mail com mais de 60 caracteres
+         Scenario: Não deve ser possível atualizar E-mail com mais de 60 caracteres
             When preencho o campo E-mail
             | email | chicochicochicochicochicochicochicochicochicochicochicochico@g.com |
             Then visualizo uma mensagem de erro
