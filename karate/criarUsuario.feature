@@ -17,7 +17,7 @@ Feature: Criar usuário
         #     When method post
         #     Then status 201  
 
-        # Scenario: Não deve ser possível cadastrar usuário com e-mail sem @
+        # Scenario: Não deve ser possível cadastrar usuário com e-mail com mais de 60 caracteres
         #     * def userComEmailMaisDe60Caracteres = {name: "Grupo", email: "onipresente22.com", password: "teste"} 
         #     And request userComEmailMaisDe60Caracteres
         #     When method post
