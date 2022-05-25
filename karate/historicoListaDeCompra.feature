@@ -8,8 +8,6 @@ Feature: Histórico de lista de compras
         And path "/list/history"
         * def usuario = call read("hook.feature@CadastrarUsuario")
         
-        
-        
         Scenario: Histórico
             * def login = call read("hook.feature@LoginUsuario")
             And header X-JWT-Token = login.response.session.token

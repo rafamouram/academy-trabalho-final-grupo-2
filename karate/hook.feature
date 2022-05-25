@@ -16,7 +16,7 @@ Background: Critérios para o Hook
         
         @LoginUsuario
         Scenario: Login Usuário
-            #* def usuario = call read("hook.feature@CadastrarUsuario")        
+            * def usuario = call read("hook.feature@CadastrarUsuario")        
             And path "/auth/login"
             And form field email = usuario.payloadUsuario.email
             And form field password = usuario.payloadUsuario.password
