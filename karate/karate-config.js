@@ -1,10 +1,10 @@
-function setup(){
+function setup() {
     var config = {
-        baseUrl: "https://academy-lembra-compras.herokuapp.com/login"
+        baseUrl: "https://academy-lembra-compras.herokuapp.com"
     }
 
-    karate.configure('logPrettyRequest',true);
-    karate.configure('logPrettyResponse',true);
+    karate.configure('logPrettyRequest', true);
+    karate.configure('logPrettyResponse', true);
 
     return config;
 }
