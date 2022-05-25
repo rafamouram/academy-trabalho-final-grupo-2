@@ -73,7 +73,21 @@ Feature: Criar usuário
         #     Then status 400
 
         # Scenario: Cadastrar usuário sem senha
-        #     * def userSemSenha = {name: "teste", email: ""}
+        #     * def userSemSenha = {name: "teste", email: "teste@grupo2.com", password: ""}
         #     And request userSemSenha
         #     When method post
         #     Then status 400
+
+
+        Scenario Outline: Cadastrar com e-mail inválido
+            * def userComEmailInvalido = {name: "Grupo", email: <userEmail> , password: "teste"} 
+            And request userComEmailInvalido
+            When method post
+            Then status 400
+            Examples:
+                | userEmail                                                                       |
+                | onipresenteonipresenteonipresenteonipresenteonipresenteonipresente@22.com       |
+                | onite&@22.com                                                                   |
+                | onipresente@22com                                                               |
+                | onipresente22.com                                                               | 
+                |                                                                                 | 
