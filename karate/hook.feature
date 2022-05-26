@@ -1,22 +1,21 @@
 Feature: Hook Criar
 
 Background: Critérios para o Hook
-    * def userNameAleatorio = "Equipe Onipresente"
-    * def userEmailAleatorio = Date.now().toString()+"@gmail.com"
-    * def userPasswordAleatorio = Date.now().toString()
-    * def payloadUsuario = read('user.json')
     Given url baseUrl
 
         @CadastrarUsuario
-        Scenario: Cadastrar Usuário            
+        Scenario: Cadastrar Usuário
+            * def userNameAleatorio = "Equipe Onipresente"
+            * def userEmailAleatorio = Date.now().toString()+"@gmail.com"
+            * def userPasswordAleatorio = Date.now().toString()
+            * def payloadUsuario = read('user.json')          
             And path "/users"
             And request payloadUsuario
             When method POST
             Then status 201
         
         @LoginUsuario
-        Scenario: Login Usuário
-            * def usuario = call read("hook.feature@CadastrarUsuario")        
+        Scenario: Login Usuário      
             And path "/auth/login"
             And form field email = usuario.payloadUsuario.email
             And form field password = usuario.payloadUsuario.password
@@ -25,7 +24,6 @@ Background: Critérios para o Hook
 
         @CriarLista
         Scenario: Criar Lista
-            * def login = call read("hook.feature@LoginUsuario")
             * def descricaoDaListaAleatoria = "Lista " + Date.now().toString()
             * def payloadLista = read('lista.json')
             And path "/list"
@@ -36,10 +34,10 @@ Background: Critérios para o Hook
         
         @Historico
         Scenario: Historico
-            * def login = call read("hook.feature@LoginUsuario")
             And path "/list/history"
             And header X-JWT-Token = login.response.session.token
             When method GET
-            Then status 200
+            Then status 200         
 
-
+#    AO COPIAR ESTE ARQUIVO NÃO ESQUEÇA DE COPIAR TAMBEM O 
+#    LISTA.JSON E USER.JSON
