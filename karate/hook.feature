@@ -1,31 +1,35 @@
 Feature: Hook Criar
 
-    @cadastrarUsuario
-    Scenario: Cadastrar usuário
-        * def userNameAleatorio = "Onipresente" + java.util.UUID.randomUUID()
-        * def userEmailAleatorio = java.util.UUID.randomUUID() + "@gmail.com"
-        * def userSenhaAleatorio = java.util.UUID.randomUUID() + "a"
+Background: Critérios para o Hook
+    * def userNameAleatorio = "Equipe Onipresente"
+    * def userEmailAleatorio = Date.now().toString()+"@gmail.com"
+    * def userPasswordAleatorio = Date.now().toString()
+    * def payloadUsuario = read('user.json')
+    Given url baseUrl
 
-        * def payloadUsuario = read('user.json')
-        Given url baseUrl
-        And path "users"
-        And request payloadUsuario
-        When method post
-        Then status 201
+        @CadastrarUsuario
+        Scenario: Cadastrar Usuário            
+            And path "/users"
+            And request payloadUsuario
+            When method post
+            Then status 201
+        
+        @LoginUsuario
+        Scenario: Login Usuário
+            * def usuario = call read("hook.feature@CadastrarUsuario")        
+            And path "/auth/login"
+            And form field email = usuario.payloadUsuario.email
+            And form field password = usuario.payloadUsuario.password
+            When method POST
+            Then status 200
 
-    @criarLista
-    Scenario: Criar lista
-        * def descricaoDaListaAleatoria = "Lista" + java.util.UUID.randomUUID()
-        * def token = "#(sessionToken)"
-        * def payloadLista = read('lista.json')
- 
-        Given url baseUrl + "/list"
-        And request payloadLista
-        When method post
-        Then status 201
-
-    @salvarLista
-    Scenario: Salvar lista
-
-
-
+        @CriarLista
+        Scenario: Criar Lista
+            * def login = call read("hook.feature@LoginUsuario")
+            * def descricaoDaListaAleatoria = "Lista " + Date.now().toString()
+            * def payloadLista = read('lista.json')
+            And path "/list"
+            And header X-JWT-Token = login.response.session.token
+            And request payloadLista
+            When method post
+            Then status 201
