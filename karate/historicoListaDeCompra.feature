@@ -7,9 +7,9 @@ Feature: Histórico de lista de compras
         Given url baseUrl
         And path "/list/history"
         * def usuario = call read("hook.feature@CadastrarUsuario")
+        * def login = call read("hook.feature@LoginUsuario")
         
-        Scenario: Histórico
-            * def login = call read("hook.feature@LoginUsuario")
+        Scenario: Histórico         
             And header X-JWT-Token = login.response.session.token
             When method GET
             Then status 200
@@ -17,8 +17,9 @@ Feature: Histórico de lista de compras
 
         Scenario: Lista histórico
             * def lista = call read("hook.feature@CriarLista")
-            * def listId = lista.id        
-            And form field X-JWT-Token = login.response.session.token
-            And path listId
+            * def historico = call read("hook.feature@Historico")  
+            * def idLista = historico.response.id            
+            #And form field X-JWT-Token = login.response.session.token
+            And path idLista           
             When method GET
             Then status 200
