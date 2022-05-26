@@ -75,7 +75,6 @@ Feature: Perfil
             Then visualizo uma mensagem de erro
             | mensagem | Formato do nome é inválido. |
          
-         # Bug com caracteres especiais
          Scenario: Atualizar Usuário com apenas espaço
             When preencho o campo nome
             | nome |      |
