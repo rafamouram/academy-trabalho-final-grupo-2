@@ -3,23 +3,27 @@ Feature: Histórico de lista de compras
     Desejo consultar minhas últimas listas de compra
     Para visualizar minhas últimas compras
 
-    Background: Acesso a API
+    Background: Pré-requisitos para cenários
         Given url baseUrl
         And path "/list/history"
         * def usuario = call read("hook.feature@CadastrarUsuario")
         * def login = call read("hook.feature@LoginUsuario")
+        * def criarLista = call read("hook.feature@CriarLista") 
         
-        Scenario: Histórico         
+        #Este é o primeiro cenário do HISTÓRICO DE LISTAS
+        Scenario: Histórico de listas
             And header X-JWT-Token = login.response.session.token
             When method GET
             Then status 200
             And match response == "#array"
 
-        Scenario: Lista histórico
-            * def lista = call read("hook.feature@CriarLista")
-            * def historico = call read("hook.feature@Historico")  
-            * def idLista = historico.response.id            
-            #And form field X-JWT-Token = login.response.session.token
-            And path idLista           
+        #Este é o primeiro cenário do ENCONTRA LISTA INATIVA
+        Scenario: Lista encontrada
+            * def historico = call read("hook.feature@Historico")            
+            And header X-JWT-Token = login.response.session.token
+            And path historico.response[0].id
             When method GET
             Then status 200
+
+#       RESSALVO QUE AMBOS SÃO CENÁRIOS DIFERENTES NO SWAGGER
+#       PORTANTO DEVE ESTAR SEPARADOS
