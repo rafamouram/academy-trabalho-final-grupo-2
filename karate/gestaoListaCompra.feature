@@ -86,3 +86,18 @@ Feature: Gestão de lista de compras
 
             #Comparo a soma da quantidade inicial + a quantidade adicional com a quantidade do item atualizado
             And match qtdItemInicial+qtdAdicional == qtdItemFinal
+
+        #Validando critérios de aceite 9
+        Scenario: Limite máximo da quantidade total atualizada de itens existentes na lista de compras
+            * def criarLista = call read("hook.feature@CriarLista")
+            * def lista = call read("hook.feature@RetornarListaAtiva")
+
+            * def nomeItem = lista.response.items[0].name
+            * def qtdItem = 1000
+            * def payloadItem = read('item.json')
+            And header X-JWT-Token = login.response.session.token
+            And path "item"
+            And request payloadItem
+            When method post
+            Then status 422
+            And match response contains { error: "Max item amount is 1000."}
