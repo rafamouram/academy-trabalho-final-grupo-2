@@ -9,12 +9,6 @@ Feature: Gestão de lista de compras
         * def usuario = call read("hook.feature@CadastrarUsuario")
         * def login = call read("hook.feature@LoginUsuario")
 
-        Scenario: Lista         
-            And header X-JWT-Token = login.response.session.token
-            When method GET
-            Then status 200
-            And match response == "#array" 
-
         #Validando critérios de aceite 1, 3, 4
         Scenario: Criando nova lista de compras com descrição
             * def descricaoDaListaAleatoria = "Lista " + Date.now().toString()
@@ -41,3 +35,33 @@ Feature: Gestão de lista de compras
 
         #Validando critérios de aceite 7
         #Scenario: Limite máximo da quantidade dos itens da lista de compras
+
+        #Validando critérios de aceite 8
+        Scenario: Incluindo item já existente na lista de compras
+        * def criarLista = call read("hook.feature@CriarLista")
+        * def lista = call read("hook.feature@RetornarListaAtiva")
+
+        #Guardo a quantidade inicial do primeiro item da lista
+        * def qtdItemInicial = lista.response.items[0].amount
+
+        #Guardo a quantidade que irei adicionar no primeiro item
+        * def qtdAdicional = 3
+
+        #Adiciono no payload a quantidade adicional a ser adicionada para o primeiro item
+        * def payloadItem = {name: "#(lista.response.items[0].name)", amount: "#(qtdAdicional)"}
+        
+        #Envio o payload para atualizar a quantidade do item
+        And header X-JWT-Token = login.response.session.token
+        And path "item"
+        And request payloadItem
+        When method post
+        Then status 201
+
+        #Puxo a lista novamente para buscar o item com a quantidade atualizada
+        * def novaLista = call read("hook.feature@RetornarListaAtiva")
+
+        #Guardo a quantidade inicial do primeiro item da lista
+        * def qtdItemFinal = novaLista.response.items[0].amount
+
+        #Comparo a soma da quantidade inicial + a quantidade adicional com a quantidade do item atualizado
+        And match qtdItemInicial+qtdAdicional == qtdItemFinal
