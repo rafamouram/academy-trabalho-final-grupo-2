@@ -44,11 +44,11 @@ Feature: Criar usuário
             Then status 400
             And match response contains { error: "Bad request."}
             Examples:
-                | userEmail                                                                       |
-                | onipresenteonipresenteonipresenteonipresenteonipresenteonipresente@22.com       |
-                | onipresente@22com                                                               |
-                | onipresente22.com                                                               | 
-                |                                                                                 | 
+                | userEmail                                                                                          |
+                | OnipresenteOnipresenteOnipresenteOnipresenteOnipresenteOnipresenteOnipresenteOnipresente@gmail.com |
+                | onipresente@22com                                                                                  |
+                | onipresente22.com                                                                                  | 
+                |                                                                                                    | 
 
         Scenario Outline: Cadastrar com nome inválido
             * def userComNomeInvalido = {name: <userNome> , email: "grupo2@gmail.com" , password: "teste"} 
