@@ -31,10 +31,34 @@ Feature: Gestão de lista de compras
             Then status 201
 
         #Validando critérios de aceite 6
-        #Scenario: Limite mínimo da quantidade dos itens da lista de compras
+        Scenario: Limite mínimo da quantidade dos itens da lista de compras
+            * def criarLista = call read("hook.feature@CriarLista")
+            * def lista = call read("hook.feature@RetornarListaAtiva")
+
+            * def nomeItem = "exemplo"
+            * def qtdItem = 0
+            * def payloadItem = read('item.json')
+            And header X-JWT-Token = login.response.session.token
+            And path "item"
+            And request payloadItem
+            When method post
+            Then status 400
+            And match response contains { error: "Bad request."}
 
         #Validando critérios de aceite 7
-        #Scenario: Limite máximo da quantidade dos itens da lista de compras
+        Scenario: Limite máximo da quantidade dos itens da lista de compras
+            * def criarLista = call read("hook.feature@CriarLista")
+            * def lista = call read("hook.feature@RetornarListaAtiva")
+
+            * def nomeItem = "exemplo"
+            * def qtdItem = 1001
+            * def payloadItem = read('item.json')
+            And header X-JWT-Token = login.response.session.token
+            And path "item"
+            And request payloadItem
+            When method post
+            Then status 422
+            And match response contains { error: "Max item amount is 1000."}
 
         #Validando critérios de aceite 8
         Scenario: Incluindo item já existente na lista de compras
