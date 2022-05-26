@@ -22,6 +22,13 @@ Background: Critérios para o Hook
             When method POST
             Then status 200
 
+        @RetornarListaAtiva
+        Scenario: Retornar Lista Ativa
+            And path "/list"
+            And header X-JWT-Token = login.response.session.token
+            When method GET
+            Then status 200
+
         @CriarLista
         Scenario: Criar Lista
             * def descricaoDaListaAleatoria = "Lista " + Date.now().toString()
