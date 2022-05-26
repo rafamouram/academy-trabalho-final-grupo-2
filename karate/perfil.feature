@@ -12,7 +12,7 @@ Feature: Perfil
         
         Given url baseUrl
         And path "users"
-        #@ignore 
+          
         Scenario: Atualizar email do usuário com sucesso
             * def emailAtualizado = Date.now().toString()+"@gmail.com"
             
@@ -22,7 +22,7 @@ Feature: Perfil
             Then status 200
             And match response == "#object" 
             And match response contains {id: #string, name: "#(usuario.response.name)", email: "#(emailAtualizado)", is_admin: #boolean, createdAt: #string, updatedAt: #string }
-        #@ignore
+         
         Scenario: Atualizar nome do usuário com sucesso
             * def nomeAtualizado = "bruno"
             
@@ -32,7 +32,7 @@ Feature: Perfil
             Then status 200
             And match response == "#object"
             And match response contains {id: #string, name: "#(nomeAtualizado)", email: "#(userConta)", is_admin: #boolean, createdAt: #string, updatedAt: #string }
-        #@ignore
+         
         Scenario: Não é possível atualizar o email para um email existente   
             * def usuario2 = call read("hook.feature@CadastrarUsuario")
 
@@ -42,7 +42,8 @@ Feature: Perfil
             Then status 422
             And match response == "#object" 
             And match response contains { error: E-mail already in use. }
-        #@ignore # Erro da API - status code esperado = 400, status code obtido = 200
+          
+    # Erro da API - status code esperado = 400, status code obtido = 200
         Scenario: Não deve ser possível atualizar o nome para que tenha mais de 100 caracteres.    
             Given header X-JWT-Token = tokenUser 
             And request { name: brunobrunobrunobrunobrunobrunobrunobrunobrunobrunobrunobrunobrunobrunobrunobrunobrunobrunobrunobrunobrunobruno, email: "#(userConta)" }
@@ -50,7 +51,7 @@ Feature: Perfil
             Then status 400
             And match response == "#object" 
             And match response contains { error: Bad request. }
-        #@ignore
+         
         Scenario: Não deve ser possível atualizar o email para que tenha mais de 60 caracteres.   
             Given header X-JWT-Token = tokenUser 
             And request { name: "#(usuario.response.name)", email: "brunobrunobrunobrunobrunobrunobrunobrunobrunobrunobrunobrunobrunobrunobrunobrunobrunobrunobruno@gmail.com" }  
@@ -58,7 +59,7 @@ Feature: Perfil
             Then status 400
             And match response == "#object" 
             And match response contains { error: Bad request. }
-        #@ignore
+         
         Scenario Outline: Não deve ser possível atualizar o email utilizando formatos inválidos.     
             Given header X-JWT-Token = tokenUser
             And request { name: "#(usuario.response.name)", email: <emailInvalido> }  
@@ -72,7 +73,7 @@ Feature: Perfil
                 | bruno@gmailcombr    |
                 | bruno.com           |
                 | ###@gmail.com/raro  | 
-        #@ignore
+         
         Scenario: Tentar atualizar sem preencher os campos de nome e email
             Given header X-JWT-Token = tokenUser 
             And request { name: "", email: "" }
@@ -80,7 +81,7 @@ Feature: Perfil
             Then status 400
             And match response == "#object" 
             And match response contains { error: Bad request.}    
-        #@ignore
+         
         Scenario: Usuário deve estar logado para atualizar suas informações
             * def usuarioId = usuario.response.id
             * def payloadId = { id: "#(usuarioId)", name: "#(usuario.response.name)", email: "#(userConta)", is_admin: "#boolean", createdAt: "#string", updatedAt: "#string" }
@@ -91,7 +92,7 @@ Feature: Perfil
             Then status 200
             And match response == "#object" 
             And match response contains payloadId
-        #@ignore 
+         
         Scenario: Usuário com token inválido de acesso
             * def usuarioId = usuario.response.id  
             
@@ -100,6 +101,7 @@ Feature: Perfil
             When method GET
             Then status 401
             And match response == "#object" 
+            And match response contains { status: 401, message: "Invalid token."}
         
         
 
