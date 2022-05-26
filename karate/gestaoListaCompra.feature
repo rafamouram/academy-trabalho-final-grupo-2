@@ -47,15 +47,12 @@ Feature: Gestão de lista de compras
         #Guardo a quantidade que irei adicionar no primeiro item
         * def qtdAdicional = 3
 
-        #Adiciono no payload a quantidade adicional a ser adicionada para o primeiro item
-        * def payloadItem = {name: "#(lista.response.items[0].name)", amount: "#(qtdAdicional)"}
+        #Adiciono as variáveis de nome e quantidade a ser adicionada para o primeiro item
+        * def nomeItem = lista.response.items[0].name
+        * def qtdItem = qtdAdicional
         
-        #Envio o payload para atualizar a quantidade do item
-        And header X-JWT-Token = login.response.session.token
-        And path "item"
-        And request payloadItem
-        When method post
-        Then status 201
+        #Faço a chamada do hook para atualizar a quantidade do item
+        And call read("hook.feature@CriarOuAtualizarItem")
 
         #Puxo a lista novamente para buscar o item com a quantidade atualizada
         * def novaLista = call read("hook.feature@RetornarListaAtiva")
