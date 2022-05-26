@@ -8,11 +8,35 @@ Feature: Histórico de lista de compras
         And path "/list/history"
         * def usuario = call read("hook.feature@CadastrarUsuario")
         * def login = call read("hook.feature@LoginUsuario")
-        * def criarLista = call read("hook.feature@CriarLista")
+        
         
     #Histórico de listas
-        Scenario: Retorno de listas do usuário
+        Scenario: Histórico de listas
+            * def criarLista = call read("hook.feature@CriarLista")
             And header X-JWT-Token = login.response.session.token
             When method GET
             Then status 200
             And match response == "#array"
+            Then match response[*].id == "#present"
+            Then match response[*].userId == "#present"
+            Then match response[*].description == "#present"
+            Then match response[*].active == "#present"
+            Then match response[*].createdAt == "#present"
+            Then match response[*].updatedAt == "#present"
+
+        Scenario: Histórico sem lista
+            And header X-JWT-Token = login.response.session.token
+            When method GET
+            Then status 200
+            And match response == "#array"
+        
+        Scenario: Credenciais inválidas
+            And header X-JWT-Token = "token invalido"
+            When method GET
+            Then status 401
+            And match response contains {status: 401, message: "Invalid token."}
+
+        Scenario: Ocorreu erro
+            When method GET
+            Then status 500
+            And match response contains {error: "An error ocurred."}
