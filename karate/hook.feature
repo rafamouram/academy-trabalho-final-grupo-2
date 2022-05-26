@@ -38,6 +38,15 @@ Background: Critérios para o Hook
             And request payloadLista
             When method POST
             Then status 201
+
+        @CriarOuAtualizarItem
+        Scenario: Criar Ou Atualizar Item
+            * def payloadItem = read('item.json')
+            And header X-JWT-Token = login.response.session.token
+            And path "/list/item"
+            And request payloadItem
+            When method post
+            Then status 201
         
         @Historico
         Scenario: Historico
