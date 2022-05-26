@@ -1,0 +1,4 @@
+{
+    "name":   "#(nomeItem)",
+    "amount": "#(qtdItem)"
+}
