@@ -37,7 +37,4 @@ Background: Critérios para o Hook
             And path "/list/history"
             And header X-JWT-Token = login.response.session.token
             When method GET
-            Then status 200         
-
-#    AO COPIAR ESTE ARQUIVO NÃO ESQUEÇA DE COPIAR TAMBEM O 
-#    LISTA.JSON E USER.JSON
+            Then status 200

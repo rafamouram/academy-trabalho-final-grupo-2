@@ -41,6 +41,14 @@ Feature: Login com um usuário
             And match response contains { error: #string }
     
     #Autenticação falhou
+        Scenario: Tentativa de login com Email e Password em branco
+            And form field email = " "
+            And form field password = " "
+            When method POST
+            Then status 403
+            And match response == "#object"
+            And match response contains { error: #string }
+
         Scenario: Tentativa de login com Email incorreto
             And form field email = "incorreto"
             And form field password = usuario.payloadUsuario.password
