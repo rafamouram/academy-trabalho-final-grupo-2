@@ -38,27 +38,27 @@ Feature: Gestão de lista de compras
 
         #Validando critérios de aceite 8
         Scenario: Incluindo item já existente na lista de compras
-        * def criarLista = call read("hook.feature@CriarLista")
-        * def lista = call read("hook.feature@RetornarListaAtiva")
+            * def criarLista = call read("hook.feature@CriarLista")
+            * def lista = call read("hook.feature@RetornarListaAtiva")
 
-        #Guardo a quantidade inicial do primeiro item da lista
-        * def qtdItemInicial = lista.response.items[0].amount
+            #Guardo a quantidade inicial do primeiro item da lista
+            * def qtdItemInicial = lista.response.items[0].amount
 
-        #Guardo a quantidade que irei adicionar no primeiro item
-        * def qtdAdicional = 3
+            #Guardo a quantidade que irei adicionar no primeiro item
+            * def qtdAdicional = 3
 
-        #Adiciono as variáveis de nome e quantidade a ser adicionada para o primeiro item
-        * def nomeItem = lista.response.items[0].name
-        * def qtdItem = qtdAdicional
-        
-        #Faço a chamada do hook para atualizar a quantidade do item
-        And call read("hook.feature@CriarOuAtualizarItem")
+            #Adiciono as variáveis de nome e quantidade a ser adicionada para o primeiro item
+            * def nomeItem = lista.response.items[0].name
+            * def qtdItem = qtdAdicional
+            
+            #Faço a chamada do hook para atualizar a quantidade do item
+            And call read("hook.feature@CriarOuAtualizarItem")
 
-        #Puxo a lista novamente para buscar o item com a quantidade atualizada
-        * def novaLista = call read("hook.feature@RetornarListaAtiva")
+            #Puxo a lista novamente para buscar o item com a quantidade atualizada
+            * def novaLista = call read("hook.feature@RetornarListaAtiva")
 
-        #Guardo a quantidade inicial do primeiro item da lista
-        * def qtdItemFinal = novaLista.response.items[0].amount
+            #Guardo a quantidade inicial do primeiro item da lista
+            * def qtdItemFinal = novaLista.response.items[0].amount
 
-        #Comparo a soma da quantidade inicial + a quantidade adicional com a quantidade do item atualizado
-        And match qtdItemInicial+qtdAdicional == qtdItemFinal
+            #Comparo a soma da quantidade inicial + a quantidade adicional com a quantidade do item atualizado
+            And match qtdItemInicial+qtdAdicional == qtdItemFinal
