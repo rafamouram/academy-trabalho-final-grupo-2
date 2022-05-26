@@ -1,6 +1,7 @@
 {
     "description": "#(descricaoDaListaAleatoria)",
-    "items": [{
+    "items": 
+    [{
         "name": "Arroz 5kg",
         "amount": 1
     },
@@ -11,5 +12,5 @@
     {
         "name": "Óleo 1L",
         "amount": 1
-        }]
-    }    
+    }]
+}    
