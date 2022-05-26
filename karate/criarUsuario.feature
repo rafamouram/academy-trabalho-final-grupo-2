@@ -67,4 +67,4 @@ Feature: Criar usuário
             And request userEmailCaractereInvalido
             When method post
             Then status 400
-            And match response contains { error: "Bad request."}
+            And match response contains { error: ""}
