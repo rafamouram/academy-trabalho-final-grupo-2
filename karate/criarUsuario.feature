@@ -3,7 +3,7 @@ Feature: Criar usuário
     Desejo me registrar no sistema
     Para ter acesso as funcionalidades de lista de compras
 
-    Background: Acessar o site e entrar na tela de registro
+    Background: Acessar o site e o link de cadastro
         Given url baseUrl
         And path "users"
 
