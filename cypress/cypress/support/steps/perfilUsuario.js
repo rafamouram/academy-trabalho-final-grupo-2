@@ -54,39 +54,21 @@ Then("visualizo uma mensagem de sucesso", (tabela) => {
 
 When("preencho o campo E-mail com um E-mail já utilizado", (tabela) => {
     var email = tabela.rowsHash();
-    perfil_Page.atualizarEmail(email);
-    perfil_Page.cadastroEmailExistente();
-    // cy.intercept('PUT', baseUrl + '/users', {
-    //     statusCode: 422,
-    //     body: {
-    //         "error": "User already exists."
-    //       }
-    // })
+    perfil_Page.atualizarEmail(email)
+    perfil_Page.interceptEmailExistente();
     perfil_Page.confirmarAlteracoes();
 });
 
 When("preencho o campo E-mail com um E-mail inválido", (tabela) => {
     var email = tabela.rowsHash();
     perfil_Page.atualizarEmail(email);
-    perfil_Page.atualizarEmailInvalido();
-    // cy.intercept('PUT', baseUrl + '/users', {
-    //     statusCode: 422,
-    //     body: {
-    //         "error": "Invalid email."
-    //       }
-    // })
+    perfil_Page.interceptEmailInvalido();
     perfil_Page.confirmarAlteracoes();
 });
 
 When("preencho o campo nome com um nome inválido", (tabela) => {
     var nome = tabela.rowsHash();
     perfil_Page.atualizarNome(nome);
-    perfil_Page.atualizarNomeInvalido();
-    // cy.intercept('PUT', baseUrl + '/users', {
-    //     statusCode: 422,
-    //     body: {
-    //         "error": "Invalid name."
-    //       }
-    // })
+    perfil_Page.interceptNomeInvalido();
     perfil_Page.confirmarAlteracoes();
 });
