@@ -15,12 +15,12 @@ Feature: Perfil
             When deixo o campo nome em branco
             And preencho o campo E-mail
             | email | sophia@g.com |
-            Then visualizo uma mensagem de sucesso
+            Then visualizo uma mensagem de erro
             | mensagem | Informe seu nome |
 
          Scenario: Atualizar com campo E-mail em branco
-            When deixo os campos email em branco
-            And preencho o campo E-mail
+            When deixo o campo email em branco
+            And preencho o campo nome
             | nome | Sophia Santos |
             Then visualizo uma mensagem de erro
             | mensagem | Informe seu e-mail |
@@ -39,44 +39,44 @@ Feature: Perfil
 
          # Bug com o e-mail já utilizado
          Scenario: Atualizar Usuário com E-mail já utilizado
-            When preencho o campo E-mail
+            When preencho o campo E-mail com um E-mail já utilizado
             | email | landin@gmail.com |
             Then visualizo uma mensagem de sucesso
             | mensagem | Formato de nome inválido |
 
          Scenario: Atualizar Usuário com E-mail inválido
-            When preencho o campo E-mail
+            When preencho o campo E-mail com um E-mail inválido
             | email | luffyg.com |
             Then visualizo uma mensagem de erro
             | mensagem | Formato de e-mail inválido. |
 
          Scenario: Atualizar nome com mais de 100 caracteres
-            When preencho o campo nome
+            When preencho o campo nome com um nome inválido
             | email | ChicoChicoChicoChicoChicoChicoChicoChicoChicoChicoChicoChicoChicoChicoChicoChicoChicoChicoChicoChicoChicoChico |
             Then visualizo uma mensagem de erro
             | mensagem | Informe no máximo 100 letras no seu nome |
          
          # Bug com mais de 60 caracteres
          Scenario: Não deve ser possível atualizar E-mail com mais de 60 caracteres
-            When preencho o campo E-mail
+            When preencho o campo E-mail com um E-mail inválido
             | email | chicochicochicochicochicochicochicochicochicochicochicochico@g.com |
             Then visualizo uma mensagem de erro
             | mensagem | Informe no máximo 60 caracteres  |
 
          Scenario: Atualizar usuário pelo nome com caracteres especiais válidos
-            When preencho o campo nome
+            When preencho o campo nome com um nome inválido
             | nome | .... |
             Then visualizo uma mensagem de sucesso
             | mensagem | Informações atualizadas com sucesso |
 
          Scenario: Atualizar usuário pelo nome com caracteres especiais inválidos
-            When preencho o campo nome
+            When preencho o campo nome com um nome inválido
             | nome | ,,,, |
             Then visualizo uma mensagem de erro
             | mensagem | Formato do nome é inválido. |
          
          Scenario: Atualizar Usuário com apenas espaço
-            When preencho o campo nome
+            When preencho o campo nome com um nome inválido
             | nome |      |
             Then visualizo uma mensagem de erro
             | mensagem | Não foi possível atualizar suas informações 🥺 |
