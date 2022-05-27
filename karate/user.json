@@ -1,5 +1,5 @@
 {
     "name": "#(userNameAleatorio)",
     "email": "#(userEmailAleatorio)",
-    "password": "#(userSenhaAleatoria)"
+    "password": "#(userPasswordAleatorio)"
 }

@@ -10,7 +10,7 @@ Feature: Criar usuário
         Scenario: Cadastrar usuário com nome, e-mail, senha e confirmar senha
             * def userNameAleatorio = "Onipresente" + java.util.UUID.randomUUID()
             * def userEmailAleatorio = java.util.UUID.randomUUID() + "@gmail.com"
-            * def userSenhaAleatoria = "123456"
+            * def userPasswordAleatorio = "123456"
 
             * def payloadUsuario = read('user.json')
             And request payloadUsuario
@@ -50,17 +50,31 @@ Feature: Criar usuário
                 | onipresente22.com                                                                                  | 
                 |                                                                                                    | 
 
-        Scenario Outline: Cadastrar com nome inválido
-            * def userComNomeInvalido = {name: <userNome> , email: "grupo2@gmail.com" , password: "teste"} 
+        # Erro da API - status code esperado = 400, status code obtido = 200
+        Scenario: Cadastrar com nome com mais de 100 letras
+            * def userComNomeInvalido = {name: "OnipresenteOnipresenteOnipresenteOnipresenteOnipresenteOnipresenteOnipresenteOnipresenteOnipresenteOnipresenteOnipresenteOnipresenteOnipresente" , email: "grupo2@gmail.com" , password: "teste"} 
             And request userComNomeInvalido
             When method post
             Then status 400
             And match response contains { error: "Bad request."}
-            Examples:
-                | userNome                                                                                                                                          |
-                | OnipresenteOnipresenteOnipresenteOnipresenteOnipresenteOnipresenteOnipresenteOnipresenteOnipresenteOnipresenteOnipresenteOnipresenteOnipresente   |                                              
-                |                                                                                                                                                   | 
 
+        Scenario: Cadastrar sem preencher o campo nome
+            * def userComNomeInvalido = {name: "" , email: "grupo2@gmail.com" , password: "teste"} 
+            And request userComNomeInvalido
+            When method post
+            Then status 400
+            And match response contains { error: "Bad request."}
+
+        # Erro da API - status code esperado = 400, status code obtido = 201  
+        Scenario: Cadastrar com nome com números
+            * def nomeInvalido = "Oni" + java.util.UUID.randomUUID()
+            * def userComNomeInvalido = {name: "#(nomeInvalido)" , email: "grupo2@gmail.com" , password: "teste"} 
+            And request userComNomeInvalido
+            When method post
+            Then status 400
+            And match response contains { error: "Bad request."}                                                                                                                                             
+
+        # Erro da API - status code esperado = 400, status code obtido = 200
         Scenario: Cadastrar usuário com caractere especial inválido no email
             * def emailInvalido =  java.util.UUID.randomUUID() + "&@gmail.com"
             * def userEmailCaractereInvalido = {name: "Onipresentes", email: "#(emailInvalido)", password: "1234567"}
