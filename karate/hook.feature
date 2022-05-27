@@ -5,7 +5,7 @@ Background: Critérios para o Hook
 
         @CadastrarUsuario
         Scenario: Cadastrar Usuário
-            * def userNameAleatorio = "Equipe Onipresente"
+            * def userNameAleatorio = "Quebradores de API"
             * def userEmailAleatorio = Date.now().toString()+"@gmail.com"
             * def userPasswordAleatorio = Date.now().toString()
             * def payloadUsuario = read('user.json')          

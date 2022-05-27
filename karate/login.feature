@@ -25,6 +25,7 @@ Feature: Login com um usuário
             Then status 400
             And match response == "#object"
             And match response contains { error: #string }
+            And match response contains { error: "Bad request." }
 
         Scenario: Tentativa de login sem passar parametro Email
             And form field password = usuario.payloadUsuario.password
@@ -32,6 +33,7 @@ Feature: Login com um usuário
             Then status 400
             And match response == "#object"
             And match response contains { error: #string }
+            And match response contains { error: "Bad request." }
         
         Scenario: Tentativa de login sem passar parametro Password
             And form field email = usuario.payloadUsuario.email
@@ -39,6 +41,7 @@ Feature: Login com um usuário
             Then status 400
             And match response == "#object"
             And match response contains { error: #string }
+            And match response contains { error: "Bad request." }
     
     #Autenticação falhou
         Scenario: Tentativa de login com Email e Password em branco
@@ -48,6 +51,7 @@ Feature: Login com um usuário
             Then status 403
             And match response == "#object"
             And match response contains { error: #string }
+            And match response contains { error: "Invalid email or password." }
 
         Scenario: Tentativa de login com Email incorreto
             And form field email = "incorreto"
@@ -56,6 +60,7 @@ Feature: Login com um usuário
             Then status 403
             And match response == "#object"
             And match response contains { error: #string }
+            And match response contains { error: "Invalid email or password." }
 
         Scenario: Tentativa de login com Password incorreto
             And form field email = usuario.payloadUsuario.email
@@ -64,3 +69,4 @@ Feature: Login com um usuário
             Then status 403
             And match response == "#object"
             And match response contains { error: #string }
+            And match response contains { error: "Invalid email or password." }
