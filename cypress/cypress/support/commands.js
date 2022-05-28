@@ -50,6 +50,6 @@ Cypress.Commands.add('interceptLogin', () =>
     })
 );
 
-Cypress.Commands.add('visualizoMensagem', (mensagem) => {
+Cypress.Commands.add('visualizarMensagem', (mensagem) => {
     cy.contains(mensagem).should("be.visible");
 });

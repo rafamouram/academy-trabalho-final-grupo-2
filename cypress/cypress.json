@@ -1,4 +1,1 @@
-{
-    "baseUrl": "https://academy-lembra-compras.herokuapp.com/",
-    "testFiles": "**/*.feature"
-}
+{}

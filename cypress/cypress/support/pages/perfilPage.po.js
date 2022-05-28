@@ -1,17 +1,23 @@
 class PerfilPage {
 
-    inputEmail = 'input[placeholder="Nome"]';
-    inputNome = 'input[placeholder="E-mail"]';
+    inputEmail = 'input[placeholder="E-mail"]';
+    inputNome = 'input[placeholder="Nome"]';
 
     atualizarEmail(email) {
         this.apagarEmail();
-        cy.get(this.inputEmail).type(email);
+        cy.get(this.inputEmail).type(email.email);
     }
 
     atualizarNome(nome) {
         this.apagarNome();
-        cy.get(this.inputNome).clear().type(nome);
+        cy.get(this.inputNome).clear().type(nome.nome);
     }
+
+    atualizarNomeEspacos() {
+        this.apagarNome();
+        cy.get(this.inputNome).clear().type("    ");
+    }
+
 
     apagarEmail() {
         cy.get(this.inputEmail).clear();
@@ -23,11 +29,11 @@ class PerfilPage {
 
     confirmarAlteracoes() {
         cy.contains("Confirmar alterações").click();
-        cy.contains("Confirmar").click();
+        cy.get('.iMjKmA').contains("Confirmar").click();
     }
 
     interceptEmailExistente() {
-        cy.intercept('PUT', baseUrl + '/users', {
+        cy.intercept('PUT', 'https://lista-compras-api.herokuapp.com/api/v1/users', {
             statusCode: 422,
             body: {
                 "error": "User already exists."
@@ -36,7 +42,7 @@ class PerfilPage {
     }
 
     interceptEmailInvalido() {
-        cy.intercept('PUT', baseUrl + '/users', {
+        cy.intercept('PUT', 'https: //lista-compras-api.herokuapp.com/api/v1/users', {
             statusCode: 404,
             body: {
                 "error": "Bad request."
@@ -52,6 +58,21 @@ class PerfilPage {
             }
         })
     }
+
+    deslogarDoSite() {
+        cy.get('.bgBaRw').click({ force: true });
+        cy.contains('Sair').click();
+        cy.wait(1000);
+    }
+
+    confirmarAlteracoesMeio1() {
+        cy.contains("Confirmar alterações").click();
+    }
+
+    confirmarAlteracoesMeio2() {
+        cy.get('.iMjKmA').contains("Confirmar").click();
+    }
+
 }
 
 export var perfil_Page = new PerfilPage();
