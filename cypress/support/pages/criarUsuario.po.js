@@ -15,12 +15,32 @@ class CriarUsuario {
         cy.contains("Registre-se").should('exist')
     }
 
-    cadastrar(name,email,password,confirmPassword){
+    preencherCampos(name,email,password,confirmPassword){
         cy.get(this.formName).type(name)
         cy.get(this.formEmail).type(email)
         cy.get(this.formPassword).type(password)
         cy.get(this.formConfirmPassword).type(confirmPassword)
-        cy.contains("Registrar").click()
+    }
+
+    usuarioCadastrado(){
+        cy.intercept("POST","https://lista-compras-api.herokuapp.com/api/v1/users",{
+            statusCode: 201,
+            body: [{
+                id:"22c01f9c-debb-411d-81f5-d7ab12e78a7d",
+                name:"Quebradores de API",
+                email:"grupo2@raro.lab",
+                is_admin:false
+            }]
+        });
+    }
+
+    usuarioExistente(){
+        cy.intercept("POST","https://lista-compras-api.herokuapp.com/api/v1/users",{
+            statusCode: 422,
+            body: [{
+                error:"User already exists."
+            }]
+        });
     }
 
 }
