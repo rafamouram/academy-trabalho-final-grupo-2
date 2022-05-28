@@ -36,7 +36,7 @@ class PerfilPage {
         cy.intercept('PUT', 'https://lista-compras-api.herokuapp.com/api/v1/users', {
             statusCode: 422,
             body: {
-                "error": "User already exists."
+                "error": "E-mail already in use."
             }
         })
     }
@@ -61,7 +61,7 @@ class PerfilPage {
 
     deslogarDoSite() {
         cy.get('.bgBaRw').click({ force: true });
-        cy.contains('Sair').click();
+        cy.contains('Sair').click({ force: true });
         cy.wait(1000);
     }
 

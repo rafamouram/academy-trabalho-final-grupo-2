@@ -6,7 +6,6 @@ import { lista_Page } from '../pages/gestaoListaCompra.po';
 
 import { criarUsuario } from '../pages/criarUsuario.po';
 
-
 afterEach(() => {
     perfil_Page.deslogarDoSite();
 });
@@ -17,13 +16,13 @@ Given("que acessei o site Lembra compras", () => {
 
 Given("loguei no site", (tabela) => {
     var usuario = tabela.rowsHash();
-    // // Cadastrando usuário para efetuar login
-    // login_Page.acessarTelaCadastrar();
-    // criarUsuario.cadastrar("Cacadores de API", usuario.email, usuario.senha, usuario.senha);
-    // //cy.interceptCadastrarUsuario();
-    // criarUsuario.clicarBotaoRegistrar();
+    // Cadastrando usuário para efetuar login
+    login_Page.acessarTelaCadastrar();
+    criarUsuario.cadastrar("Cacadores de API", usuario.email, usuario.senha, usuario.senha);
+    criarUsuario.clicarBotaoRegistrar();
 
     // Efetuando login
+    criarUsuario.acesso();
     login_Page.preenchoDadosLogin(usuario);
     //cy.interceptLogin();
     login_Page.clicarBotaoEntrar();
@@ -84,11 +83,7 @@ Then("visualizo uma mensagem de sucesso", (tabela) => {
 When("preencho o campo E-mail com um E-mail já utilizado", (tabela) => {
     var email = tabela.rowsHash();
     perfil_Page.atualizarEmail(email)
-    perfil_Page.confirmarAlteracoesMeio1();
-    perfil_Page.interceptEmailExistente();
-    perfil_Page.confirmarAlteracoesMeio2();
 });
-
 When("preencho o campo E-mail com um E-mail inválido", (tabela) => {
     var email = tabela.rowsHash();
     perfil_Page.atualizarEmail(email);
