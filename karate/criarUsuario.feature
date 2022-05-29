@@ -44,13 +44,12 @@ Feature: Criar usuário
             Then status 400
             And match response contains { error: "Bad request."}
             Examples:
-                | userEmail                                                                                          |
-                | OnipresenteOnipresenteOnipresenteOnipresenteOnipresenteOnipresenteOnipresenteOnipresente@gmail.com |
-                | onipresente@22com                                                                                  |
-                | onipresente22.com                                                                                  | 
-                |                                                                                                    | 
+                | userEmail         |                                                                                      
+                | onipresente@22com |                                                                                 
+                | onipresente22.com |                                                                                  
+                |                   |                                                                                  
 
-        # Erro da API - status code esperado = 400, status code obtido = 200
+        # Erro da API - status code esperado = 400, status code obtido = 201
         Scenario: Cadastrar com nome com mais de 100 letras
             * def userComNomeInvalido = {name: "OnipresenteOnipresenteOnipresenteOnipresenteOnipresenteOnipresenteOnipresenteOnipresenteOnipresenteOnipresenteOnipresenteOnipresenteOnipresente" , email: "grupo2@gmail.com" , password: "teste"} 
             And request userComNomeInvalido
@@ -74,11 +73,20 @@ Feature: Criar usuário
             Then status 400
             And match response contains { error: "Bad request."}                                                                                                                                             
 
-        # Erro da API - status code esperado = 400, status code obtido = 200
+        # Erro da API - status code esperado = 400, status code obtido = 201
         Scenario: Cadastrar usuário com caractere especial inválido no email
             * def emailInvalido =  java.util.UUID.randomUUID() + "&@gmail.com"
             * def userEmailCaractereInvalido = {name: "Onipresentes", email: "#(emailInvalido)", password: "1234567"}
             And request userEmailCaractereInvalido
+            When method post
+            Then status 400
+            And match response contains { error: "Bad request."}
+
+        # Erro da API - status code esperado = 400, status code obtido = 201
+         Scenario: Cadastrar usuário com email com mais de 60 caracteres
+            * def emailInvalido =  java.util.UUID.randomUUID() + "brunobrunobrunobrunoa@g.com"
+            * def userEmailMaisCaracteres = {name: "Onipresentes", email: "#(emailInvalido)", password: "1234567"}
+            And request userEmailMaisCaracteres
             When method post
             Then status 400
             And match response contains { error: "Bad request."}
