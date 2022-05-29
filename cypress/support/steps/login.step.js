@@ -1,10 +1,9 @@
 import{loginPage} from "../pages/login.po"
+import{perfil_Page} from "../pages/perfilPage.po"
 	
 	Given("acessei o site Lembra Compras", () => {
 		loginPage.acessarPagina();
-		// loginPage.textoPagina();
-		// loginPage.textoPagina2();
-		// loginPage.textoNaJanela();
+		
 	});
 
 	When("tento fazer login sem preencher os dados e-mail e senha", () => {
@@ -43,8 +42,7 @@ import{loginPage} from "../pages/login.po"
 		loginPage.redirecionadoPagina();
 	});
 
-
-
-
-
+	after(() => {
+		perfil_Page.deslogarDoSite();
+	});
 

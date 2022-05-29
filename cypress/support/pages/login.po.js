@@ -3,9 +3,6 @@ class LoginPage {
     inputSenha = "input[name='password']"
     botaoEntrar = "button"
     linkRegistrar = ".sc-crXcEl "
-    textoTelaInicial = "a.sc-bczRLJ"
-    textoTelaInicial2 = ("h1", 'Entre e saiba mais')
-    textoJanela = ("title", 'Lembra Compras')
 
         acessarPagina () {
             cy.visit("");
@@ -32,7 +29,7 @@ class LoginPage {
         }
 
         textoPagina () {
-            cy.contains(this.textoTelaInicial).should("be.visible");
+            cy.get(this.textoTelaInicial).should("be.visible");
         }
 
         textoPagina2 () {
