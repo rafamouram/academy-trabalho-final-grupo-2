@@ -72,6 +72,6 @@ Feature: Perfil
             | mensagem | Formato do nome é inválido. |
          
          Scenario: Atualizar Usuário com apenas espaço
-            When preencho o campo nome com apenas espaço
+            When preencho o campo nome com apenas espaços
             Then visualizo uma mensagem de erro
             | mensagem | Não foi possível atualizar suas informações 🥺 |    

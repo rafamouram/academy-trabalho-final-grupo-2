@@ -45,7 +45,7 @@ When("preencho o campo nome", (tabela) => {
     cy.contains("Minhas informações").click();
 });
 
-When("preencho o campo nome com apenas espaço", (tabela) => {
+When("preencho o campo nome com apenas espaços", () => {
     perfil_Page.atualizarNomeEspacos();
     cy.contains("Minhas informações").click();
     perfil_Page.confirmarAlteracoes();
