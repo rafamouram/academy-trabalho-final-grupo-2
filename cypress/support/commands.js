@@ -24,6 +24,7 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
+
 Cypress.Commands.add('interceptCadastrarUsuario', () => 
     cy.intercept("POST", "https://lista-compras-api.herokuapp.com/api/v1/users", {
         statusCode: 201,
@@ -40,8 +41,41 @@ Cypress.Commands.add('interceptLogin', () =>
         statusCode: 200,
         body: { "auth": true,
                 "session": {
-                "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpZCI6IjBmOTViMmFiLTgyMjgtNDRlNy1hYjFiLTExNjI5MzI5ZDIxOSIsImlzX2FkbWluIjpmYWxzZSwiZW1haWwiOiJicnVub0BnbWFpbC5jb20iLCJkYXRlQ3JlYXRlZCI6MTY1MzY2MDY0NjEzMywiaXNzdWVkIjoxNjUzNjYwNjQ2MTMzLCJleHBpcmVzIjoxNjUzNjYxNTQ2MTMzfQ.ENVZ4CRfC7lGqnMX6RqT4MGK4ihEvzuDIxBYrgC2p6jkMtvygM3OIKeaZwVSf7UDU7y7LuVLN5yNGb2cduZQGQ",
+                "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpZCI6IjRkMjUxNGQ4LTlkNjAtNGFjYS1hMzg5LTA2OThiNTMzYmZjMSIsImlzX2FkbWluIjpmYWxzZSwiZW1haWwiOiJicnVub0BnbWFpbC5jb20iLCJkYXRlQ3JlYXRlZCI6MTY1MzY5OTk3NzEyNCwiaXNzdWVkIjoxNjUzNjk5OTc3MTI0LCJleHBpcmVzIjoxNjUzNzAwODc3MTI0fQ.QnDh8gjjMxPQAlIHBB5EYNkOcgpCIhJ2fwjZhTsgyUt8G0Bj9NODerRgfGJeLFRkWOVmVWuYjp46oht0Z8VCaA",
                 "issued": 1642697242447,
                 "expires": 1642697242447 }}
     })       
 );
+
+Cypress.Commands.add('inteceptListaVazia', () =>
+    cy.intercept('GET', 'https://lista-compras-api.herokuapp.com/api/v1/list', {
+        statusCode: 200,
+        body: [ ] 
+    })
+);
+
+Cypress.Commands.add('interceptLista', () =>
+    cy.intercept('GET', 'https://lista-compras-api.herokuapp.com/api/v1/list', {
+        statusCode: 200,
+        body: {
+                    "description": "Compras da semana",
+                    "items": [
+                        {
+                        "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                        "listId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                        "name": "iorgute 1L",
+                        "amount": 1,
+                        "createdAt": "2022-05-28T17:27:52.368Z",
+                        "updatedAt": "2022-05-28T17:27:52.368Z"}
+                        ]}
+             })
+)
+
+Cypress.Commands.add('interceptAddItem', () =>
+    cy.intercept('POST', 'https://lista-compras-api.herokuapp.com/api/v1/list/item', {
+        statusCode: 201, 
+          
+    })            
+
+)
+

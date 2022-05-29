@@ -51,10 +51,10 @@ Feature: Perfil
             Then status 400
             And match response == "#object" 
             And match response contains { error: Bad request. }
-         
+    # Erro da API - status code esperado = 400, status code obtido = 200       
         Scenario: Não deve ser possível atualizar o email para que tenha mais de 60 caracteres.   
             Given header X-JWT-Token = tokenUser 
-            And request { name: "#(usuario.response.name)", email: "brunobrunobrunobrunobrunobrunobrunobrunobrunobrunobrunobrunobrunobrunobrunobrunobrunobrunobruno@gmail.com" }  
+            And request { name: "#(usuario.response.name)", email: "brunobrunobrunobrunobrunobrunobrunobrunobrunobrunobrunobrunoO@gmail.com" }  
             When method PUT
             Then status 400
             And match response == "#object" 
