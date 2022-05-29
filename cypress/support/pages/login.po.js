@@ -1,25 +1,25 @@
-class loginPage {
-    inputEmail = ("input[type='email']")
-    inputSenha = ("input[type='password']")
-    botaoEntrar = ("button", 'Entrar')
-    linkRegistrar = ("a", 'Registre-se')
-    textoTelaInicial = ("p", 'Cansou de esquecer o que você iria comprar ?')
+class LoginPage {
+    inputEmail = "input[name='email']"
+    inputSenha = "input[name='password']"
+    botaoEntrar = "button"
+    linkRegistrar = ".sc-crXcEl "
+    textoTelaInicial = "a.sc-bczRLJ"
     textoTelaInicial2 = ("h1", 'Entre e saiba mais')
     textoJanela = ("title", 'Lembra Compras')
 
         acessarPagina () {
-            cy.visit("https://academy-lembra-compras.herokuapp.com/login");
+            cy.visit("");
         }
 
         visualizarMensagem (mensagem) {
             cy.contains(mensagem).should("be.visible");
         }
 
-        preencherEmail () {
-            cy.get(this.inputNome).type(email);
+        preencherEmail (email) {
+            cy.get(this.inputEmail).type(email);
         }
 
-        preencherSenha () {
+        preencherSenha (senha) {
             cy.get(this.inputSenha).type(senha);
         }
 
@@ -42,4 +42,10 @@ class loginPage {
         textoNaJanela () {
             cy.contains(this.textoJanela).should("be.visible");
         }
+
+        redirecionadoPagina() {
+            cy.url().should("be.equal", "https://academy-lembra-compras.herokuapp.com/lista")
+        }
 }
+
+export var loginPage = new LoginPage();

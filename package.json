@@ -13,14 +13,14 @@
     "type": "git",
     "url": "git+https://github.com/rafamouram/academy-trabalho-final-grupo-grupo2.git"
   },
-  "author": "",
+  "author": "Francisco Santos",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/rafamouram/academy-trabalho-final-grupo-grupo2/issues"
   },
   "homepage": "https://github.com/rafamouram/academy-trabalho-final-grupo-grupo2#readme",
   "dependencies": {
-    "cypress": "^9.6.1",
+    "cypress": "^9.7.0",
     "cypress-cucumber-preprocessor": "^4.3.1"
   }
 }

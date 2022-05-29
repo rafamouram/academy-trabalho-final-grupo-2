@@ -1,3 +1,5 @@
 {
+    "baseUrl": "https://academy-lembra-compras.herokuapp.com/login",
     "testFiles": "**/*.feature"
+    
 }
