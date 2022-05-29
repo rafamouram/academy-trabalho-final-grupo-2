@@ -23,3 +23,11 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+// cy.intercept('POST', 'https://lista-compras-api.herokuapp.com/api/v1/auth/login', {
+//         statusCode: 200,
+//         body: { "auth": true,
+//                 "session": {
+//                 "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpZCI6IjRkMjUxNGQ4LTlkNjAtNGFjYS1hMzg5LTA2OThiNTMzYmZjMSIsImlzX2FkbWluIjpmYWxzZSwiZW1haWwiOiJicnVub0BnbWFpbC5jb20iLCJkYXRlQ3JlYXRlZCI6MTY1MzY5OTk3NzEyNCwiaXNzdWVkIjoxNjUzNjk5OTc3MTI0LCJleHBpcmVzIjoxNjUzNzAwODc3MTI0fQ.QnDh8gjjMxPQAlIHBB5EYNkOcgpCIhJ2fwjZhTsgyUt8G0Bj9NODerRgfGJeLFRkWOVmVWuYjp46oht0Z8VCaA",
+//                 "issued": 1642697242447,
+//                 "expires": 1642697242447 }}
+//     })       

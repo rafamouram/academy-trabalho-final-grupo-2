@@ -127,7 +127,3 @@ Feature: Criar usuário
             And clico no botão para visualizar a confirmação de senha
             Then visualizo a minha confirmação de senha
             | confirmar senha | 123 |
-
-        # Scenario: Voltar para a tela de login
-        #     When clico para voltar para a tela de login
-        #     Then visualizo a tela de login

@@ -42,7 +42,31 @@ import{perfil_Page} from "../pages/perfilPage.po"
 		loginPage.redirecionadoPagina();
 	});
 
+	When("informo um e-mail e senha não correspondentes", (tabela) => {
+		var dadosTabela = tabela.rowsHash();
+		loginPage.preencherEmail(dadosTabela.email);
+		loginPage.preencherSenha(dadosTabela.senha);
+		loginPage.clicarEntrar();
+	});
+
+	
+	When("informo um e-mail inexistente e senha", (tabela) => {
+		var dadosTabela = tabela.rowsHash();
+		loginPage.preencherEmail(dadosTabela.email);
+		loginPage.preencherSenha(dadosTabela.senha);
+		loginPage.clicarEntrar();
+	});
+
+	When("informo um e-mail e senha válidos", (tabela) => {
+		var dadosTabela = tabela.rowsHash();
+		loginPage.preencherEmail(dadosTabela.email);
+		loginPage.preencherSenha(dadosTabela.senha);
+		loginPage.clicarEntrar();
+	});
+
 	after(() => {
 		perfil_Page.deslogarDoSite();
 	});
+
+
 
