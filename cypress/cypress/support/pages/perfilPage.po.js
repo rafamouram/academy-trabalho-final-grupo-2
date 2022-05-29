@@ -73,6 +73,11 @@ class PerfilPage {
         cy.get('.iMjKmA').contains("Confirmar").click();
     }
 
+    interceptEmailValido() {
+        cy.intercept('PUT', 'https://lista-compras-api.herokuapp.com/api/v1/users', {
+            statusCode: 200
+        })
+    }
 }
 
 export var perfil_Page = new PerfilPage();

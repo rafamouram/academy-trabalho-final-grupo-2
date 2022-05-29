@@ -6,27 +6,26 @@ import { lista_Page } from '../pages/gestaoListaCompra.po';
 
 import { criarUsuario } from '../pages/criarUsuario.po';
 
-afterEach(() => {
-    perfil_Page.deslogarDoSite();
-});
-
-Given("que acessei o site Lembra compras", () => {
-    criarUsuario.acesso();
-});
-
-Given("loguei no site", (tabela) => {
-    var usuario = tabela.rowsHash();
+before(() => {
+    login_Page.acesso();
+    var email = "grupo2@oni.com";
+    var nome = "Cacadores de API";
+    var senha = "1234";
     // Cadastrando usuário para efetuar login
     login_Page.acessarTelaCadastrar();
-    criarUsuario.cadastrar("Cacadores de API", usuario.email, usuario.senha, usuario.senha);
+    criarUsuario.cadastrar(nome, email, senha, senha);
     criarUsuario.clicarBotaoRegistrar();
 
     // Efetuando login
     criarUsuario.acesso();
-    login_Page.preenchoDadosLogin(usuario);
-    //cy.interceptLogin();
+    login_Page.preenchoDadosLogin(email, senha);
     login_Page.clicarBotaoEntrar();
 });
+
+after(() => {
+    perfil_Page.deslogarDoSite();
+});
+
 
 Given("acessei a tela de perfil", () => {
     lista_Page.acessarTelaPerfil();
@@ -67,6 +66,7 @@ When("preencho o campo E-mail", (tabela) => {
 When("preencho o campo E-mail e confirmo", (tabela) => {
     var email = tabela.rowsHash();
     perfil_Page.atualizarEmail(email)
+    perfil_Page.interceptEmailValido();
     perfil_Page.confirmarAlteracoes();
 });
 

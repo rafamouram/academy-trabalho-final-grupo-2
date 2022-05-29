@@ -4,37 +4,33 @@ Feature: Perfil
    Para manter meus dados atualizados no sistema.
 
    Background: Acessar a tela de perfil
-      Given que acessei o site Lembra compras
-      And loguei no site
-        | email | sophiwwa@g.com  |
-        | senha | 1234          |
-      And acessei a tela de perfil
+      Given acessei a tela de perfil
 
-         # Scenario: Atualizar com campo nome em branco
-         #    When deixo o campo nome em branco
-         #    And preencho o campo E-mail
-         #    | email | sophia@g.com |
-         #    Then visualizo uma mensagem de erro
-         #    | mensagem | Informe seu nome |
+         Scenario: Atualizar com campo nome em branco
+            When deixo o campo nome em branco
+            And preencho o campo E-mail
+            | email | sophia@g.com |
+            Then visualizo uma mensagem de erro
+            | mensagem | Informe seu nome |
 
-         # Scenario: Atualizar com campo E-mail em branco
-         #    When deixo o campo email em branco
-         #    And preencho o campo nome
-         #    | nome | Sophia Santos |
-         #    Then visualizo uma mensagem de erro
-         #    | mensagem | Informe seu e-mail |
+         Scenario: Atualizar com campo E-mail em branco
+            When deixo o campo email em branco
+            And preencho o campo nome
+            | nome | Sophia Santos |
+            Then visualizo uma mensagem de erro
+            | mensagem | Informe seu e-mail |
 
-         # Scenario: Atualizar Usuário pelo nome
-         #    When preencho o campo nome e confirmo
-         #    | nome | Sophia Santos |
-         #    Then visualizo uma mensagem de sucesso
-         #    | mensagem | Informações atualizadas com sucesso |
+         Scenario: Atualizar Usuário pelo nome
+            When preencho o campo nome e confirmo
+            | nome | Sophia Santos |
+            Then visualizo uma mensagem de sucesso
+            | mensagem | Informações atualizadas com sucesso |
 
-         # Scenario: Atualizar Usuário pelo E-mail
-         #    When preencho o campo E-mail e confirmo
-         #    | email | sophia@g.com |
-         #    Then visualizo uma mensagem de sucesso
-         #    | mensagem | Informações atualizadas com sucesso |
+         Scenario: Atualizar Usuário pelo E-mail
+            When preencho o campo E-mail e confirmo
+            | email | sophia@g.com |
+            Then visualizo uma mensagem de sucesso
+            | mensagem | Informações atualizadas com sucesso |
 
          # Bug com o e-mail já utilizado
          Scenario: Atualizar Usuário com E-mail já utilizado
@@ -57,17 +53,17 @@ Feature: Perfil
          
          # Bug com mais de 60 caracteres - Deixa atualizar até e-mail com 75 caracteres
          Scenario: Não deve ser possível atualizar E-mail com mais de 60 caracteres
-            When preencho o campo E-mail invalidamente
+            When preencho o campo E-mail
             | email | chicochicochicochicochicochicochicochicochicochicochicochico@g.com |
             Then visualizo uma mensagem de erro
-            | mensagem | Informe no máximo 60 caracteres  |
+            | mensagem | Informe no máximo 60 caracteres para o e-mail |
 
          # Bug atualiza usuário com nome apenas com pontos
          Scenario: Atualizar usuário pelo nome com caracteres especiais inválidos - Bug
             When preencho o campo nome e confirmo
             | nome | .... |
-            Then visualizo uma mensagem de sucesso
-            | mensagem | Informações atualizadas com sucesso |
+            Then visualizo uma mensagem de erro
+            | mensagem | Formato do nome é inválido. |
 
          Scenario: Atualizar usuário pelo nome com caracteres especiais inválidos
             When preencho o campo nome
