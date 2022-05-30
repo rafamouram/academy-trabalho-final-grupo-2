@@ -113,7 +113,7 @@ Feature: Gestão de lista de compras
                 Then visualizo a mensagem de erro na lista
                 | mensagem | Informe uma quantidade menor ou igual a 1000 |
             
-            #Validando critérios de aceite 9
+            # Continuação das validações dos critérios de aceite 9
             Scenario: Atualizando a quantidade do item para ultrapassar a capacidade máxima de 1000 itens
                  When incluo uma lista de itens na lista de compras
                 | nome       | quantidade |
