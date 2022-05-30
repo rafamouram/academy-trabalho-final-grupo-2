@@ -112,6 +112,18 @@ Feature: Gestão de lista de compras
                 | quantidade | 1001      |
                 Then visualizo a mensagem de erro na lista
                 | mensagem | Informe uma quantidade menor ou igual a 1000 |
+            
+            #Validando critérios de aceite 9
+            Scenario: Atualizando a quantidade do item para ultrapassar a capacidade máxima de 1000 itens
+                 When incluo uma lista de itens na lista de compras
+                | nome       | quantidade |
+                | arroz 5kg  |   1000     |
+                And salvo a lista de compras
+                And incluo um item na lista de compras
+                | nome       | arroz 5kg |
+                | quantidade | 1         |
+                Then visualizo a mensagem de erro na lista
+                | mensagem | Não é permitido incluir mais de 1000 unidades do produto. |
 
             #Validando critérios de aceite 10
             Scenario: Marcando item como concluído na lista de compras
@@ -143,4 +155,5 @@ Feature: Gestão de lista de compras
                 | quantidade | 2 |
                 Then visualizo uma mensagem de erro
                 | mensagem | Informe o nome do produto |
-        
+
+           
