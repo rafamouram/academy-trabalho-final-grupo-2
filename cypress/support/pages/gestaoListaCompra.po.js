@@ -15,7 +15,7 @@ class gestaoListaDeComprasPage {
 
     deslogarDoSite() {
         cy.get('.bgBaRw').click({ force: true });
-        cy.contains('Sair').click();
+        cy.contains('Sair').click({ force: true });
 
     }
     preencherNomeDaLista(descricao) {
@@ -36,13 +36,13 @@ class gestaoListaDeComprasPage {
 
     }; 
     clicarAdicionarItem() {
-        cy.contains("button", "+").click();    
+        cy.contains("button", "+").click({force: true});    
 
     };
 
     clicarBotaoSalvar() {
         cy.contains('button', 'Salvar').click();
-
+        
     };
 
     botaoFinalizarLista() {
@@ -59,9 +59,15 @@ class gestaoListaDeComprasPage {
         cy.get('.lcjWUB').should('be.visible');
     }
     
+    confirmarFinalizarNoFim() {
+        cy.contains('button', 'Confirmar').click({force: true});
+        cy.wait(3000);
+    }
+    
     confirmarFinalizarLista() {
         cy.contains('button', 'Confirmar').click({force: true});
     }
+    
     clicarMenu() {
         cy.get(this.buttonMenu).click();
     };
@@ -71,7 +77,7 @@ class gestaoListaDeComprasPage {
     }
 
     riscarItemNaLista() {
-        cy.get(this.checkbox).click();
+        cy.get(this.checkbox).should('be.visible');
     };
     
     mensagemDeErro(mensagem) {

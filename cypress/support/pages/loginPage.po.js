@@ -2,9 +2,9 @@ class loginPage {
     inputEmail = "[name='email']";
     inputSenha = "[name='password']";
 
-    preenchoDadosLogin(tabela) {
-        cy.get(this.inputEmail).type(tabela.email);
-        cy.get(this.inputSenha).type(tabela.senha);
+    preenchoDadosLogin(email, senha) {
+        cy.get(this.inputEmail).type(email);
+        cy.get(this.inputSenha).type(senha);
     }
 
     clicarBotaoEntrar() {

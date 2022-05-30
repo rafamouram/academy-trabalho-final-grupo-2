@@ -5,7 +5,7 @@ class CriarUsuario {
     formConfirmPassword = "[name='confirmPassword']"
 
     acesso() {
-        cy.visit("");
+        cy.visit("https://academy-lembra-compras.herokuapp.com/login");
     }
 
     validarPagLogin() {
