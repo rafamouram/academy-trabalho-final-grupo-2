@@ -3,13 +3,15 @@ Feature: Gestão de lista de compras
     Desejo gerenciar uma lista de compras
     Para registrar os produtos que desejo comprar
 
+        
         #Condição para todos os cenários
         Background: Acessando a aplicação Lembra Compras
-            Given que acessei o site Lembra Compras
+            Given acessei o site Lembra Compras
             And loguei com um usuário
             | email | grupo2raro@gemil.com |
             | senha | grupo2raro           |
-
+        @logarSite
+            
             #Validando critérios de aceite 1, 3, 4
             Scenario: Criando nova lista de compras com descrição
                 When preencho a descrição da lista de compras
@@ -148,7 +150,8 @@ Feature: Gestão de lista de compras
                 And salvo a lista de compras
                 Then visualizo uma mensagem de sucesso
                 | mensagem | Lista concluída com sucesso |
-
+            
+            @deslogarSite
             Scenario: Incluindo item com nome com menos de 2 caracteres
                 When incluo um item na lista de compras
                 | nome       | a |

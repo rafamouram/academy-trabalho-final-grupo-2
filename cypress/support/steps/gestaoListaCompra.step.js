@@ -2,7 +2,14 @@ import { gestaoListaDeCompras } from "../pages/gestaoListaCompra.po"
 import { login_Page } from "../pages/loginPage.po"
 import { criarUsuario } from "../pages/criarUsuario.po"
 
-before(() => {
+const {
+    Before,
+    After,
+    Given,
+    Then
+  } = require("cypress-cucumber-preprocessor/steps");
+
+Before({ tags: "@logarSite" }, () => {
     criarUsuario.acesso();
     var email = "grupo2@oni.com";
     var nome = "Cacadores de API";
@@ -18,11 +25,11 @@ before(() => {
     login_Page.clicarBotaoEntrar();
 });
 
-after(() => {
+After({ tags: "@deslogarSite" },() => {
     gestaoListaDeCompras.deslogarDoSite();
 });
 
-Given("que acessei o site Lembra Compras", () => {
+Given("acessei o site Lembra Compras", () => {
    
 });    
 

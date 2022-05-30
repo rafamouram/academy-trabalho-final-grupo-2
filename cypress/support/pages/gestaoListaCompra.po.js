@@ -16,8 +16,8 @@ class gestaoListaDeComprasPage {
     deslogarDoSite() {
         cy.get('.bgBaRw').click({ force: true });
         cy.contains('Sair').click({ force: true });
-
     }
+    
     preencherNomeDaLista(descricao) {
         cy.get(this.inputNameLista).click().type(descricao);
          
@@ -33,21 +33,18 @@ class gestaoListaDeComprasPage {
 
     botaoAdicionarItem() {
         cy.contains("button", "+").should('be.visible');  
-
     }; 
+    
     clicarAdicionarItem() {
         cy.contains("button", "+").click({force: true});    
-
     };
 
     clicarBotaoSalvar() {
-        cy.contains('button', 'Salvar').click();
-        
+        cy.contains('button', 'Salvar').click();   
     };
 
     botaoFinalizarLista() {
         cy.contains('button', 'Finalizar a lista').should('be.visible');
-
     };
 
     clicarFinalizarLista() {
