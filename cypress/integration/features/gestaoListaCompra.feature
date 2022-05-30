@@ -3,12 +3,12 @@ Feature: Gestão de lista de compras
     Desejo gerenciar uma lista de compras
     Para registrar os produtos que desejo comprar
 
-        # #Condição para todos os cenários
-        # Background: Acessando a aplicação Lembra Compras
-        #     Given que acessei o site Lembra Compras
-        #     And loguei com um usuário
-        #     | email | grupo2raro@gemil.com |
-        #     | senha | grupo2raro           |
+        #Condição para todos os cenários
+        Background: Acessando a aplicação Lembra Compras
+            Given que acessei o site Lembra Compras
+            And loguei com um usuário
+            | email | grupo2raro@gemil.com |
+            | senha | grupo2raro           |
 
             #Validando critérios de aceite 1, 3, 4
             Scenario: Criando nova lista de compras com descrição
@@ -143,29 +143,4 @@ Feature: Gestão de lista de compras
                 | quantidade | 2 |
                 Then visualizo uma mensagem de erro
                 | mensagem | Informe o nome do produto |
-
-            # Scenario: Deslogar do site Lembra Compras 
-            #     When clico no menu do Lembra Compras
-            #     And clico para sair da conta
-            #     Then sou redirecionado para a tela de login
-
-            # Scenario: Navegar para o histórico através menu
-            #     When clico no menu de Lembra Compras
-            #     And clico no histórico
-            #     Then sou redirecionado para a página do histórico
-
-            # Scenario: Navegar para o histórico através do cabeçalho
-            #     When clico no histórico
-            #     Then sou redirecionado para a página do histórico
-
-            # Scenario: Navegar para o histórico através do cabeçalho
-            #     When clico no perfil
-            #     Then sou redirecionado para a página do perfil do usuário
-
-            # Scenario: Navegar para a lista atráves do ícone "R" do site
-            #     When clico no ícone R
-            #     Then sou redirecionado para a página da lista de compras
-
-            # Scenario: Navegar para a lista atráves do ícone "Lembra Compras" do site
-            #     When clico no ícone Lembra compras
-            #     Then sou redirecionado para a página da lista de compras        
+        

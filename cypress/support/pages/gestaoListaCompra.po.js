@@ -80,12 +80,16 @@ class gestaoListaDeComprasPage {
         cy.get(this.checkbox).should('be.visible');
     };
     
+    marcarItemNaLista() {
+        cy.get(this.checkbox).click({multiple: true})
+    };
+    
     mensagemDeErro(mensagem) {
         cy.contains(mensagem).should('be.visible');   
     }
 
     quantidadeDoItem() {
-        cy.contains('span', '3').should('be.visible');
+        cy.contains('3'+ 'x - '+ 'arroz 5kg').should('be.visible');
     };
 
 }

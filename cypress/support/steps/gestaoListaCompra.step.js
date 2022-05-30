@@ -24,23 +24,10 @@ after(() => {
 
 Given("que acessei o site Lembra Compras", () => {
    
-
 });    
 
-// Given("loguei com um usuário", (tabela) => {
-//     var usuario = tabela.rowsHash();
-//     // Cadastrando usuário para efetuar login
-//     login_Page.acessarTelaCadastrar();
-//     criarUsuario.cadastrar("Cacadores de API", usuario.email, usuario.senha, usuario.senha);
-//     criarUsuario.clicarBotaoRegistrar();
-//     criarUsuario.acesso();
-
-//     // Efetuando login
-//     login_Page.preenchoDadosLogin(usuario);
-    
-//     login_Page.clicarBotaoEntrar();
-//     //cy.inteceptListaVazia();
-// });
+ Given("loguei com um usuário", () => {
+});    
 
 When("preencho a descrição da lista de compras", (tabela) => {
 	var descricaoLista = tabela.rowsHash();
@@ -54,8 +41,7 @@ When("incluo uma lista de itens na lista de compras", (tabela) => {
         gestaoListaDeCompras.preencherNomeDoItem(element.nome);
         gestaoListaDeCompras.preencherQuantidadeDoItem(element.quantidade);
         gestaoListaDeCompras.clicarAdicionarItem();  
-    });
-        
+    });     
 });
 
 When("salvo a lista de compras", () => {
@@ -63,7 +49,7 @@ When("salvo a lista de compras", () => {
 });
 
 When("marco o item como concluído na lista de compra", () => {
-	
+    gestaoListaDeCompras.marcarItemNaLista();    
 });
 
 When('incluo um item na lista de compras', (tabela) => {
@@ -78,8 +64,7 @@ Then("visualizo a mensagem de sucesso", (tabela) => {
     var listaCriadaSucesso = tabela.rowsHash(); 
     gestaoListaDeCompras.mensagemListaCriadaComSucesso(listaCriadaSucesso.mensagem);
     gestaoListaDeCompras.clicarFinalizarLista();
-    gestaoListaDeCompras.confirmarFinalizarNoFim();
-   
+    gestaoListaDeCompras.confirmarFinalizarNoFim();  
 });
 
 Then("visualizo a opção de marcar um item como concluído", () => {
@@ -125,7 +110,7 @@ Then('finalizo a lista de compras', () => {
 });
 
 Then("é acrescentada na quantidade do item já incluso anteriormente a lista de compras ativa", () => {
-    
+    gestaoListaDeCompras.quantidadeDoItem();
 });
 
 Then("visualizo o item marcado com um risco cortando o seu nome", () => {
