@@ -6,14 +6,19 @@ import { lista_Page } from '../pages/gestaoListaCompra.po';
 
 import { criarUsuario } from '../pages/criarUsuario.po';
 
-before(() => {
+const {
+    Before,
+    After
+} = require("cypress-cucumber-preprocessor/steps");
+
+Before({ tags: "@entrarSite" }, () => {
     login_Page.acesso();
     var email = "grupo2@oni.com";
     var nome = "Cacadores de API";
     var senha = "1234";
     // Cadastrando usuário para efetuar login
     login_Page.acessarTelaCadastrar();
-    criarUsuario.cadastrar(nome, email, senha, senha);
+    criarUsuario.preencherCampos(nome, email, senha, senha);
     criarUsuario.clicarBotaoRegistrar();
 
     // Efetuando login
@@ -22,7 +27,7 @@ before(() => {
     login_Page.clicarBotaoEntrar();
 });
 
-after(() => {
+After({ tags: "@deslogarSite" }, () => {
     perfil_Page.deslogarDoSite();
 });
 
@@ -82,7 +87,8 @@ Then("visualizo uma mensagem de sucesso", (tabela) => {
 
 When("preencho o campo E-mail com um E-mail já utilizado", (tabela) => {
     var email = tabela.rowsHash();
-    perfil_Page.atualizarEmail(email)
+    perfil_Page.atualizarEmail(email);
+    perfil_Page.confirmarAlteracoes();
 });
 When("preencho o campo E-mail com um E-mail inválido", (tabela) => {
     var email = tabela.rowsHash();

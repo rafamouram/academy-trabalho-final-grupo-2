@@ -8,6 +8,11 @@ class CriarUsuario {
         cy.visit("https://academy-lembra-compras.herokuapp.com/login");
     }
 
+    clicarBotaoRegistrar() {
+        cy.contains("Registrar").click()
+        cy.wait(1000);
+    }
+
     validarPagLogin() {
         cy.get(this.formEmail).should('exist')
         cy.get(this.formPassword).should('exist')
@@ -15,27 +20,30 @@ class CriarUsuario {
         cy.contains("Registre-se").should('exist')
     }
 
-    cadastrar(name, email, password, confirmPassword) {
+    preencherCampos(name, email, password, confirmPassword) {
         cy.get(this.formName).type(name)
         cy.get(this.formEmail).type(email)
         cy.get(this.formPassword).type(password)
         cy.get(this.formConfirmPassword).type(confirmPassword)
-            //cy.contains("Registrar").click()
     }
 
-    clicarBotaoRegistrar() {
-        cy.contains("Registrar").click()
-        cy.wait(1000);
-    }
-
-    usuarioCadastrado(emails) {
+    usuarioCadastrado() {
         cy.intercept("POST", "https://lista-compras-api.herokuapp.com/api/v1/users", {
             statusCode: 201,
             body: [{
                 id: "22c01f9c-debb-411d-81f5-d7ab12e78a7d",
                 name: "Quebradores de API",
-                email: emails,
+                email: "grupo2@raro.lab",
                 is_admin: false
+            }]
+        });
+    }
+
+    usuarioExistente() {
+        cy.intercept("POST", "https://lista-compras-api.herokuapp.com/api/v1/users", {
+            statusCode: 422,
+            body: [{
+                error: "User already exists."
             }]
         });
     }

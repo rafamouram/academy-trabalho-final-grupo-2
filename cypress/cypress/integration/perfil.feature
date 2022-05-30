@@ -3,9 +3,11 @@ Feature: Perfil
    Desejo atualizar minhas informações básicas
    Para manter meus dados atualizados no sistema.
 
+
    Background: Acessar a tela de perfil
       Given acessei a tela de perfil
 
+@entrarSite
          Scenario: Atualizar com campo nome em branco
             When deixo o campo nome em branco
             And preencho o campo E-mail
@@ -70,7 +72,8 @@ Feature: Perfil
             | nome | ,,,, |
             Then visualizo uma mensagem de erro
             | mensagem | Formato do nome é inválido. |
-         
+
+       @deslogarSite  
          Scenario: Atualizar Usuário com apenas espaço
             When preencho o campo nome com apenas espaços
             Then visualizo uma mensagem de erro
