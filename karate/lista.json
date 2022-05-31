@@ -1,15 +1,16 @@
 {
     "description": "#(descricaoDaListaAleatoria)",
     "items": [{
-        "name": "Arroz 5kg",
-        "amount": 1
-    },
-    {
-        "name": "Feijão 1kg",
-        "amount": 2
-    },
-    {
-        "name": "Óleo 1L",
-        "amount": 1
-        }]
-    }  
+            "name": "Arroz 5kg",
+            "amount": 1
+        },
+        {
+            "name": "Feijão 1kg",
+            "amount": 2
+        },
+        {
+            "name": "Óleo 1L",
+            "amount": 1
+        }
+    ]
+}
