@@ -30,7 +30,7 @@ After({ tags: "@deslogarSite" },() => {
 Given("acessei o site Lembra Compras", () => { 
 });    
 
- Given("loguei com um usuário", () => {
+Given("loguei com um usuário", () => {
 });    
 
 When("preencho a descrição da lista de compras", (tabela) => {
