@@ -29,16 +29,7 @@ class PerfilPage {
 
     confirmarAlteracoes() {
         cy.contains("Confirmar alterações").click();
-        cy.get('.iMjKmA').contains("Confirmar").click();
-    }
-
-    interceptEmailExistente() {
-        cy.intercept('PUT', 'https://lista-compras-api.herokuapp.com/api/v1/users', {
-            statusCode: 422,
-            body: {
-                "error": "E-mail already in use."
-            }
-        })
+        cy.get('.iMjKmA').contains("Confirmar").click({ force: true });
     }
 
     interceptEmailInvalido() {

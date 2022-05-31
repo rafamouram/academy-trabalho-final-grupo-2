@@ -1,7 +1,8 @@
 import{loginPage} from "../pages/login.po"
 import{perfil_Page} from "../pages/perfilPage.po"
+import{criarUsuario} from "../pages/criarUsuario.po"
 	
-	Given("acessei o site Lembra Compras", () => {
+	Given("que acessei o site Lembra Compras", () => {
 		loginPage.acessarPagina();
 		
 	});
@@ -59,6 +60,14 @@ import{perfil_Page} from "../pages/perfilPage.po"
 
 	When("informo um e-mail e senha válidos", (tabela) => {
 		var dadosTabela = tabela.rowsHash();
+		var email = dadosTabela.email;
+		var nome = "Cacadores de API";
+		var senha = dadosTabela.senha;
+		// Cadastrando usuário para efetuar login
+		loginPage.acessarTelaCadastrar();
+		criarUsuario.preencherCampos(nome, email, senha, senha);
+		criarUsuario.clicarBotaoRegistrar();
+		loginPage.acessarPagina();		
 		loginPage.preencherEmail(dadosTabela.email);
 		loginPage.preencherSenha(dadosTabela.senha);
 		loginPage.clicarEntrar();

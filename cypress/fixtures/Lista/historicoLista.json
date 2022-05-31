@@ -1,0 +1,80 @@
+[{
+    "id":"f25ad705-c4df-4854-9a3c-7a8870e9e578",
+    "userId":"be9247cb-9c7e-47c6-91d7-839c041ea362",
+    "description":"Lista de natal",
+    "active":false,
+    "createdAt":"2022-05-30T23:40:17.723Z",
+    "updatedAt":"2022-05-30T23:54:23.310Z"
+  },
+  {
+    "id":"58cdb306-8205-4e56-a04b-205315acd44c",
+    "userId":"be9247cb-9c7e-47c6-91d7-839c041ea362",
+    "description":"Lista escolar",
+    "active":false,
+    "createdAt":"2022-05-30T23:41:26.277Z",
+    "updatedAt":"2022-05-30T23:52:38.993Z"
+  },
+  {
+    "id":"58cdb306-8205-4e56-a04b-205315acd55c",
+    "userId":"be9247cb-9c7e-47c6-91d7-839c041ea362",
+    "description": "Lista de carnaval",
+    "active":false,
+    "createdAt":"2022-05-30T23:42:26.277Z",
+    "updatedAt":"2022-05-30T23:52:38.993Z"
+  },
+  {
+    "id":"f25ad705-c4df-4854-9a3c-7a8870e9e668",
+    "userId":"be9247cb-9c7e-47c6-91d7-839c041ea362",
+    "description":"Lista 4",
+    "active":false,
+    "createdAt":"2022-05-30T23:43:17.723Z",
+    "updatedAt":"2022-05-30T23:54:23.310Z"
+  },
+  {
+    "id":"58cdb306-8205-4e56-a04b-205315acd77c",
+    "userId":"be9247cb-9c7e-47c6-91d7-839c041ea362",
+    "description":"Lista 5",
+    "active":false,
+    "createdAt":"2022-05-30T23:44:26.277Z",
+    "updatedAt":"2022-05-30T23:52:38.993Z"
+  },
+  {
+    "id":"58cdb306-8205-4e56-a04b-205315acd88c",
+    "userId":"be9247cb-9c7e-47c6-91d7-839c041ea362",
+    "description":"Lista 6",
+    "active":false,
+    "createdAt":"2022-05-30T23:45:26.277Z",
+    "updatedAt":"2022-05-30T23:52:38.993Z"
+  },{
+    "id":"f25ad705-c4df-4854-9a3c-7a8870e9e998",
+    "userId":"be9247cb-9c7e-47c6-91d7-839c041ea362",
+    "description":"Lista 7",
+    "active":false,
+    "createdAt":"2022-05-30T23:46:17.723Z",
+    "updatedAt":"2022-05-30T23:54:23.310Z"
+  },
+  {
+    "id":"58cdb306-8205-4e56-a04b-205445acd44c",
+    "userId":"be9247cb-9c7e-47c6-91d7-839c041ea362",
+    "description":"Lista 8",
+    "active":false,
+    "createdAt":"2022-05-30T23:47:26.277Z",
+    "updatedAt":"2022-05-30T23:52:38.993Z"
+  },
+  {
+    "id":"58cdb306-8205-4e56-a04b-205555acd55c",
+    "userId":"be9247cb-9c7e-47c6-91d7-839c041ea362",
+    "description":"Lista 9",
+    "active":false,
+    "createdAt":"2022-05-30T23:48:26.277Z",
+    "updatedAt":"2022-05-30T23:52:38.993Z"
+  },
+  {
+    "id":"f25ad705-c4df-4854-9a3c-7a8990e9e578",
+    "userId":"be9247cb-9c7e-47c6-91d7-839c041ea362",
+    "description":"Lista 10",
+    "active":false,
+    "createdAt":"2022-05-30T23:49:17.723Z",
+    "updatedAt":"2022-05-30T23:54:23.310Z"
+  }
+]

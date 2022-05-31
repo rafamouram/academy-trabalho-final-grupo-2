@@ -4,7 +4,7 @@ Feature: Login
     Para conseguir utilizar os serviços do Lembra Compras
 
     Background: Tenho um usuário cadastrado no sistema e estou na tela de login
-        Given acessei o site Lembra Compras
+        Given que acessei o site Lembra Compras
 
         Scenario: Login sem preencher e-mail e senha
             When tento fazer login sem preencher os dados e-mail e senha

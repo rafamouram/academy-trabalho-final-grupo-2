@@ -1,0 +1,27 @@
+{
+    "description":"Lista 1",
+    "items":[{
+        "id":"6af9c231-c4f0-41cd-afde-84bbb065c1e3",
+        "listId":"f25ad705-c4df-4854-9a3c-7a8870e9e578",
+        "name":"Playstation",
+        "amount":1,
+        "createdAt":"2022-05-30T23:52:26.286Z",
+        "updatedAt":"2022-05-30T23:52:26.286Z"
+    },
+    {
+        "id":"8cfc7a02-e71a-42e8-b7f1-3b5a73f32be3",
+        "listId":"f25ad705-c4df-4854-9a3c-7a8870e9e578",
+        "name":"Bola",
+        "amount":2,
+        "createdAt":"2022-05-30T23:52:26.289Z",
+        "updatedAt":"2022-05-30T23:52:26.289Z"
+    },
+    {
+        "id":"9ab4c459-d195-4f2a-9833-d6150191ef60",
+        "listId":"f25ad705-c4df-4854-9a3c-7a8870e9e578",
+        "name":"Celular",
+        "amount":1,
+        "createdAt":"2022-05-30T23:52:26.306Z",
+        "updatedAt":"2022-05-30T23:52:26.306Z"
+    }
+]}

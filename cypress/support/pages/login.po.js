@@ -4,6 +4,13 @@ class LoginPage {
     botaoEntrar = "button"
     linkRegistrar = ".sc-crXcEl "
 
+    // interceptLogin() {
+    //     cy.intercept("POST", "https://lista-compras-api.herokuapp.com/api/v1/auth/login", {
+    //         statuCode: 200
+    //     });
+    
+    // }
+
         acessarPagina () {
             cy.visit("");
         }
@@ -41,7 +48,12 @@ class LoginPage {
         }
 
         redirecionadoPagina() {
+            cy.wait(2000);
             cy.url().should("be.equal", "https://academy-lembra-compras.herokuapp.com/lista")
+        }
+
+        acessarTelaCadastrar() {
+            cy.contains("Registre-se").click();
         }
 }
 
