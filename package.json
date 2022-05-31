@@ -20,7 +20,7 @@
   },
   "homepage": "https://github.com/rafamouram/academy-trabalho-final-grupo-grupo2#readme",
   "dependencies": {
-    "cypress": "^9.6.1",
+    "cypress": "^9.7.0",
     "cypress-cucumber-preprocessor": "^4.3.1"
   }
 }
