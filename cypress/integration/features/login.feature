@@ -46,6 +46,7 @@ Feature: Login
             Then visualizo uma mensagem de erro
             | mensagem | E-mail ou senha incorretos. |
 
+@deslogarSite
         Scenario: Login com usuário válido
             When informo um e-mail e senha válidos
             | email | ra@ro.com |

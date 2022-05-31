@@ -68,7 +68,8 @@ Feature: Criar usuário
         # Erro da API - status code esperado = 400, status code obtido = 201  
         Scenario: Cadastrar com nome com números
             * def nomeInvalido = "Oni" + java.util.UUID.randomUUID()
-            * def userComNomeInvalido = {name: "#(nomeInvalido)" , email: "grupo2@gmail.com" , password: "teste"} 
+            * def email = java.util.UUID.randomUUID() + "@gmail.com"	
+            * def userComNomeInvalido = {name: "#(nomeInvalido)" , email: "#(email)" , password: "teste"} 
             And request userComNomeInvalido
             When method post
             Then status 400

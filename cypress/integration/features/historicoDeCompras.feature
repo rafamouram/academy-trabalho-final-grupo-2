@@ -15,15 +15,10 @@ Feature: Histórico de lista de compras
             Then visualizo o histórico com apenas as 10 listas mais recentes
             And visualizo o nome e data de criação da lista
             | descricao   |  Lista de natal  |
-        
-        Scenario Outline: É possível visualizar o nome e os itens de uma lista no histórico    
+
+@deslogarSite   
+        Scenario: É possível visualizar a descrição e os itens de uma lista no histórico    
             When clico na lista de compras do histórico
             Then visualizo o nome da lista e os itens dentro desta
-            | item        |    <item>     |
-            | quantidade  |  <quantidade> |
-            
-            Examples:
-            | item        |  quantidade   | 
-            | Playstation |      1        |
-            | Bola        |      2        |
-            | Celular     |      1        |
+            | item        | Playstation |
+            | quantidade  |      1      |

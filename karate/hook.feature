@@ -1,3 +1,4 @@
+@ignore
 Feature: Hook Criar
 
 Background: Critérios para o Hook
