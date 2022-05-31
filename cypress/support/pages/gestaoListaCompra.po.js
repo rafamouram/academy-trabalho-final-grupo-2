@@ -1,28 +1,35 @@
 class gestaoListaDeComprasPage {
 
     inputNameLista = "input[name='description']"
-    inputNameItem =  "input[name='name']"
+    inputNameItem = "input[name='name']"
     inputQuantidadeDoItem = "input[name='amount']"
     formularioItens = "form.fLnju"
     buttonHistorico = "[href='/historico']"
     buttonR = ".cvtYsR"
     buttonMenu = ".bgBaRw"
     checkbox = "[type='checkbox']"
-    
+
+    acessarTelaPerfil() {
+        cy.contains('Lembra Compras').click();
+        cy.get('.bgBaRw').click({ force: true });
+        cy.contains('Perfil').click();
+        cy.wait(1000);
+    }
+
     visitarPagina() {
-        cy.visit('' + 'login'); 
+        cy.visit('' + 'login');
     }
 
     deslogarDoSite() {
         cy.get('.bgBaRw').click({ force: true });
         cy.contains('Sair').click({ force: true });
     }
-    
+
     preencherNomeDaLista(descricao) {
         cy.get(this.inputNameLista).click().type(descricao);
-         
+
     };
-    
+
     preencherNomeDoItem(nome) {
         cy.get(this.inputNameItem).click().type(nome);
     };
@@ -32,15 +39,15 @@ class gestaoListaDeComprasPage {
     };
 
     botaoAdicionarItem() {
-        cy.contains("button", "+").should('be.visible');  
-    }; 
-    
+        cy.contains("button", "+").should('be.visible');
+    };
+
     clicarAdicionarItem() {
-        cy.contains("button", "+").click({force: true});    
+        cy.contains("button", "+").click({ force: true });
     };
 
     clicarBotaoSalvar() {
-        cy.contains('button', 'Salvar').click();   
+        cy.contains('button', 'Salvar').click();
     };
 
     botaoFinalizarLista() {
@@ -48,23 +55,23 @@ class gestaoListaDeComprasPage {
     };
 
     clicarFinalizarLista() {
-        cy.contains('button', 'Finalizar a lista').click();   
+        cy.contains('button', 'Finalizar a lista').click();
     };
-    
+
     modalFinalizarLista() {
         cy.contains('p', 'Deseja realmente finalizar a lista de compras ?').should('be.visible');
         cy.get('.lcjWUB').should('be.visible');
     }
-    
+
     confirmarFinalizarNoFim() {
-        cy.contains('button', 'Confirmar').click({force: true});
+        cy.contains('button', 'Confirmar').click({ force: true });
         cy.wait(3000);
     }
-    
+
     confirmarFinalizarLista() {
-        cy.contains('button', 'Confirmar').click({force: true});
+        cy.contains('button', 'Confirmar').click({ force: true });
     }
-    
+
     clicarMenu() {
         cy.get(this.buttonMenu).click();
     };
@@ -76,17 +83,17 @@ class gestaoListaDeComprasPage {
     riscarItemNaLista() {
         cy.get(this.checkbox).should('be.visible');
     };
-    
+
     marcarItemNaLista() {
-        cy.get(this.checkbox).click({multiple: true})
+        cy.get(this.checkbox).click({ multiple: true })
     };
-    
+
     mensagemDeErro(mensagem) {
-        cy.contains(mensagem).should('be.visible');   
+        cy.contains(mensagem).should('be.visible');
     }
 
     quantidadeDoItem() {
-        cy.contains('3'+ 'x - '+ 'arroz 5kg').should('be.visible');
+        cy.contains('3' + 'x - ' + 'arroz 5kg').should('be.visible');
     };
 
 }

@@ -14,6 +14,10 @@ class loginPage {
     acessarTelaCadastrar() {
         cy.contains("Registre-se").click();
     }
+
+    acesso() {
+        cy.visit("https://academy-lembra-compras.herokuapp.com/login");
+    }
 }
 
 export var login_Page = new loginPage();
