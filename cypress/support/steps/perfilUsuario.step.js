@@ -1,6 +1,6 @@
 import { perfil_Page } from '../pages/perfilPage.po';
 
-import { login_Page } from '../pages/loginPage.po';
+import { loginPage } from '../pages/login.po';
 
 import { gestaoListaDeCompras } from '../pages/gestaoListaCompra.po';
 
@@ -16,20 +16,18 @@ Before({ tags: "@logarSite" }, () => {
     var nome = "Cacadores de API";
     var senha = "1234";
     // Cadastrando usuário para efetuar login
-    login_Page.acesso();
-    login_Page.acessarTelaCadastrar();
+    loginPage.acessarPagina();
+    loginPage.acessarTelaCadastrar();
     criarUsuario.preencherCampos(nome, email, senha, senha);
     criarUsuario.clicarBotaoRegistrar();
 
     // Efetuando login
     criarUsuario.acesso();
-    login_Page.preenchoDadosLogin(email, senha);
-    login_Page.clicarBotaoEntrar();
+    loginPage.preencherEmail(email);
+    loginPage.preencherSenha(senha);
+    loginPage.clicarEntrar();
 });
 
-// After({ tags: "@deslogarSite" }, () => {
-//     perfil_Page.deslogarDoSite();
-// });
 
 Given("acessei o site Lembra Compras", () => {});
 

@@ -1,5 +1,4 @@
 import { loginPage } from "../pages/login.po"
-import { perfil_Page } from "../pages/perfilPage.po"
 import { criarUsuario } from "../pages/criarUsuario.po"
 
 Given("que acessei o site Lembra Compras", () => {

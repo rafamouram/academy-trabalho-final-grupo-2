@@ -4,13 +4,6 @@ class LoginPage {
     botaoEntrar = "button"
     linkRegistrar = ".sc-crXcEl "
 
-    // interceptLogin() {
-    //     cy.intercept("POST", "https://lista-compras-api.herokuapp.com/api/v1/auth/login", {
-    //         statuCode: 200
-    //     });
-    
-    // }
-
         acessarPagina () {
             cy.visit("");
         }

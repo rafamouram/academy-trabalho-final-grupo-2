@@ -1,5 +1,5 @@
 import { gestaoListaDeCompras } from "../pages/gestaoListaCompra.po"
-import { login_Page } from "../pages/loginPage.po"
+import { loginPage } from "../pages/login.po"
 import { criarUsuario } from "../pages/criarUsuario.po"
 
 const {
@@ -7,21 +7,23 @@ const {
     After,
 } = require("cypress-cucumber-preprocessor/steps");
 
-// Before({ tags: "@logarSite" }, () => {
-//     criarUsuario.acesso();
-//     var email = "grupo2@oni.com";
-//     var nome = "Cacadores de API";
-//     var senha = "1234";
-//     // Cadastrando usuário para efetuar login
-//     login_Page.acessarTelaCadastrar();
-//     criarUsuario.preencherCampos(nome, email, senha, senha);
-//     criarUsuario.clicarBotaoRegistrar();
+Before({ tags: "@logarSite" }, () => {
+    criarUsuario.acesso();
+    var email = "grupo2@oni.com";
+    var nome = "Cacadores de API";
+    var senha = "1234";
+    // Cadastrando usuário para efetuar login
+    loginPage.acessarTelaCadastrar();
+    criarUsuario.preencherCampos(nome, email, senha, senha);
+    criarUsuario.clicarBotaoRegistrar();
 
-//     // Efetuando login
-//     criarUsuario.acesso();
-//     login_Page.preenchoDadosLogin(email, senha);
-//     login_Page.clicarBotaoEntrar();
-// });
+    // Efetuando login
+    criarUsuario.acesso();
+    loginPage.preencherEmail(email);
+    loginPage.preencherSenha(senha);
+    //loginPage.preenchoDadosLogin(email, senha);
+    loginPage.clicarEntrar();
+});
 
 After({ tags: "@deslogarSite" }, () => {
     gestaoListaDeCompras.deslogarDoSite();
