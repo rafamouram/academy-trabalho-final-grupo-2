@@ -68,7 +68,7 @@ Feature: Gestão de lista de compras
         Then status 422
         And match response contains { error: "Max item amount is 1000."}
 
-    #Validando critérios de aceite 8
+#Validando critérios de aceite 8
     Scenario: Incluindo item já existente na lista de compras
         * def criarLista = call read("hook.feature@CriarLista")
         * def lista = call read("hook.feature@RetornarListaAtiva")
@@ -89,8 +89,11 @@ Feature: Gestão de lista de compras
         #Puxo a lista novamente para buscar o item com a quantidade atualizada
         * def novaLista = call read("hook.feature@RetornarListaAtiva")
 
-        #Guardo a quantidade final do primeiro item da lista
-        * def qtdItemFinal = novaLista.response.items[0].amount
+        #Busca no array de itens o item que foi anteriormente alterado
+        * def item = novaLista.response.items.find(data => data.name === nomeItem);
+
+        #Guardo a quantidade final do item que teve sua quantidade alterada
+        * def qtdItemFinal = item.amount
 
         #Comparo a soma da quantidade inicial + a quantidade adicional com a quantidade do item atualizado
         And match qtdItemInicial+qtdAdicional == qtdItemFinal
