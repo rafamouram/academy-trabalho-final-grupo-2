@@ -11,12 +11,12 @@ const {
     After
 } = require("cypress-cucumber-preprocessor/steps");
 
-Before({ tags: "@entrarSite" }, () => {
-    login_Page.acesso();
+Before({ tags: "@logarSite" }, () => {
     var email = "grupo2@oni.com";
     var nome = "Cacadores de API";
     var senha = "1234";
     // Cadastrando usuário para efetuar login
+    login_Page.acesso();
     login_Page.acessarTelaCadastrar();
     criarUsuario.preencherCampos(nome, email, senha, senha);
     criarUsuario.clicarBotaoRegistrar();
@@ -31,6 +31,9 @@ After({ tags: "@deslogarSite" }, () => {
     perfil_Page.deslogarDoSite();
 });
 
+Given("acessei o site Lembra Compras", () => {});
+
+Given("loguei com um usuário", () => {});
 
 Given("acessei a tela de perfil", () => {
     lista_Page.acessarTelaPerfil();

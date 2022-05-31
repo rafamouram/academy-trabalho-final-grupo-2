@@ -56,14 +56,6 @@ class PerfilPage {
         cy.wait(1000);
     }
 
-    confirmarAlteracoesMeio1() {
-        cy.contains("Confirmar alterações").click();
-    }
-
-    confirmarAlteracoesMeio2() {
-        cy.get('.iMjKmA').contains("Confirmar").click();
-    }
-
     interceptEmailValido() {
         cy.intercept('PUT', 'https://lista-compras-api.herokuapp.com/api/v1/users', {
             statusCode: 200

@@ -3,11 +3,12 @@ Feature: Perfil
    Desejo atualizar minhas informações básicas
    Para manter meus dados atualizados no sistema.
 
-
    Background: Acessar a tela de perfil
+      Given acessei o site Lembra Compras
+      And loguei com um usuário
       Given acessei a tela de perfil
 
-@entrarSite
+@logarSite
          Scenario: Atualizar com campo nome em branco
             When deixo o campo nome em branco
             And preencho o campo E-mail
