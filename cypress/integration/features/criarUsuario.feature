@@ -13,7 +13,7 @@ Feature: Criar usuário
             | email          | grupo2@raro.lab    |
             | senha          | 1234568            |
             | confirmarSenha | 1234568            | 
-            Then visualizo a mensagem de sucesso
+            Then visualizo a mensagem de sucesso de Criar
             | mensagem | Usuário criado com sucesso! |
 
         Scenario Outline: Não deve ser possível cadastrar usuário com e-mail inválido
@@ -22,7 +22,7 @@ Feature: Criar usuário
             | email          | <email>          |
             | senha          | <senha>          |
             | confirmarSenha | <confirmarSenha> |
-            Then visualizo a mensagem de erro
+            Then visualizo a mensagem de erro de Criar
             | mensagem | Formato de e-mail inválido |
             
             Examples:
@@ -37,7 +37,7 @@ Feature: Criar usuário
             | email          | grupo2@raro.lab    |
             | senha          | 1234568            |
             | confirmarSenha | 1234568            | 
-            Then visualizo a mensagem de erro
+            Then visualizo a mensagem de erro de Criar
             | mensagem | Este e-mail já é utilizado por outro usuário. |
 
         Scenario Outline: Cadastrar dados inválidos
@@ -46,7 +46,7 @@ Feature: Criar usuário
             | email          | <email>          |
             | senha          | <senha>          |
             | confirmarSenha | <confirmarSenha> |
-            Then visualizo a mensagem de erro
+            Then visualizo a mensagem de erro de Criar
             | mensagem | <mensagem> |
             
             Examples:
@@ -57,11 +57,11 @@ Feature: Criar usuário
 
         Scenario: Cadastrar usuário sem nome, e-mail, senha e confirmar senha
             When cadastro usuário sem preencher os campos necessários
-            Then visualizo a mensagem de erro
+            Then visualizo a mensagem de erro de Criar
             | mensagem | Informe seu nome |
-            Then visualizo a mensagem de erro
+            Then visualizo a mensagem de erro de Criar
             | mensagem | Informe seu e-mail |
-            Then visualizo a mensagem de erro
+            Then visualizo a mensagem de erro de Criar
             | mensagem | Informe sua senha |
             
         Scenario: Cadastrar usuário com e-mail menor que 4 caracteres
@@ -70,7 +70,7 @@ Feature: Criar usuário
             | email          | gru                |
             | senha          | 1234568            |
             | confirmarSenha | 1234568            | 
-            Then visualizo a mensagem de erro
+            Then visualizo a mensagem de erro de Criar
             | mensagem | Informe um e-mail válido |
         
         Scenario: Cadastrar usuário com nome menor que 4 caracteres
@@ -79,7 +79,7 @@ Feature: Criar usuário
             | email          | grupo2@raro.lab    |
             | senha          | 1234568            |
             | confirmarSenha | 1234568            | 
-            Then visualizo a mensagem de sucesso
+            Then visualizo a mensagem de sucesso de Criar
             | mensagem | Usuário criado com sucesso! |
 
         Scenario: Visualizar a senha
