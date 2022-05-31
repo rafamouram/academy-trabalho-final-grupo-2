@@ -5,8 +5,6 @@ import { criarUsuario } from "../pages/criarUsuario.po"
 const {
     Before,
     After,
-    Given,
-    Then
   } = require("cypress-cucumber-preprocessor/steps");
 
 Before({ tags: "@logarSite" }, () => {
@@ -29,8 +27,7 @@ After({ tags: "@deslogarSite" },() => {
     gestaoListaDeCompras.deslogarDoSite();
 });
 
-Given("acessei o site Lembra Compras", () => {
-   
+Given("acessei o site Lembra Compras", () => { 
 });    
 
  Given("loguei com um usuário", () => {
@@ -38,17 +35,14 @@ Given("acessei o site Lembra Compras", () => {
 
 When("preencho a descrição da lista de compras", (tabela) => {
 	var descricaoLista = tabela.rowsHash();
-    gestaoListaDeCompras.preencherNomeDaLista(descricaoLista.descricao);
-    
+    gestaoListaDeCompras.preencherNomeDaLista(descricaoLista.descricao); 
 });
 
 When("incluo uma lista de itens na lista de compras", (tabela) => {
-    var nomeItem = tabela.hashes();
-    nomeItem.forEach(element => {
-        gestaoListaDeCompras.preencherNomeDoItem(element.nome);
-        gestaoListaDeCompras.preencherQuantidadeDoItem(element.quantidade);
-        gestaoListaDeCompras.clicarAdicionarItem();  
-    });     
+    var nomeItem = tabela.rowsHash();
+    gestaoListaDeCompras.preencherNomeDoItem(nomeItem.nome);
+    gestaoListaDeCompras.preencherQuantidadeDoItem(nomeItem.quantidade); 
+    gestaoListaDeCompras.clicarAdicionarItem();   
 });
 
 When("salvo a lista de compras", () => {
@@ -85,8 +79,7 @@ Then("visualizo a opção de incluir um novo item", () => {
 
 Then("visualizo a opção de finalizar a lista", () => {
     gestaoListaDeCompras.clicarFinalizarLista();
-    gestaoListaDeCompras.confirmarFinalizarNoFim();
-    
+    gestaoListaDeCompras.confirmarFinalizarNoFim(); 
 });
 
 Then("visualizo a mensagem de erro", (tabela) => {
@@ -94,8 +87,7 @@ Then("visualizo a mensagem de erro", (tabela) => {
     gestaoListaDeCompras.mensagemDeErro(erroMensagem.mensagem);
     gestaoListaDeCompras.clicarBotaoSalvar();
     gestaoListaDeCompras.clicarFinalizarLista();
-    gestaoListaDeCompras.confirmarFinalizarNoFim();
-    
+    gestaoListaDeCompras.confirmarFinalizarNoFim(); 
 });
 
 Then('visualizo a mensagem de erro na lista', (tabela) => {
@@ -107,8 +99,7 @@ Then('visualizo a mensagem de erro na lista', (tabela) => {
 
 Then("visualizo uma mensagem de erro", (tabela) => {
     var erroMensagem = tabela.rowsHash();
-    gestaoListaDeCompras.mensagemDeErro(erroMensagem.mensagem);
-   	
+    gestaoListaDeCompras.mensagemDeErro(erroMensagem.mensagem); 	
 });
 
 Then('finalizo a lista de compras', () => {
@@ -131,8 +122,6 @@ Then("visualizo uma mensagem de sucesso", (tabela) => {
     gestaoListaDeCompras.confirmarFinalizarLista();
     var listaCriadaSucesso = tabela.rowsHash(); 
     gestaoListaDeCompras.mensagemListaCriadaComSucesso(listaCriadaSucesso.mensagem);
-    
-   
 });
 
 
